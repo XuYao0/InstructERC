@@ -120,7 +120,7 @@ def extract_label(response: str) -> str:
     return ""
 
 
-def evaluate(model_path: str, test_file: str, batch_size: int = 8):
+def evaluate(model_path: str, test_file: str, batch_size: int = 8, output_file: str = None):
     """
     使用训练好的模型进行评估
     
@@ -128,6 +128,7 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
         model_path: 模型路径（可以是原始模型或微调后的checkpoint）
         test_file: 测试数据文件路径
         batch_size: 批处理大小
+        output_file: 详细结果输出文件路径（流式写入，避免中途中断导致数据丢失）
     """
     
     logging.info(f"Loading model from: {model_path}")
@@ -144,14 +145,19 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
     predictions = []
     ground_truths = []
     raw_outputs = []  # 保存原始输出
-    detailed_results = []  # 保存详细结果（包含输入输出）
     
     request_config = RequestConfig(
-        max_tokens=20,
+        max_tokens=200,
         temperature=0.0,  # greedy decoding
     )
     
     logging.info("\nRunning inference...")
+    
+    # 打开输出文件（流式写入模式）
+    output_fp = None
+    if output_file:
+        output_fp = open(output_file, 'w', encoding='utf-8')
+        logging.info(f"Streaming results to: {output_file}")
     
     # 批量推理
     for i in range(0, len(test_data), batch_size):
@@ -173,13 +179,13 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
             pred_label = extract_label(raw_output)
             predictions.append(pred_label)
             
-            # 保存详细结果
+            # 构建详细结果
             sample_idx = i + idx
             ground_truth = batch[idx]["messages"][2]["content"]
             # 空标签表示未能提取到有效标签，算作预测错误
             is_correct = (pred_label == ground_truth) if pred_label else False
             
-            detailed_results.append({
+            result_item = {
                 "index": sample_idx,
                 "input_messages": batch[idx]["messages"][:2],  # system + user
                 "ground_truth": ground_truth,
@@ -187,10 +193,20 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
                 "predicted_label": pred_label if pred_label else "",  # 空标签记录为空字符串
                 "is_correct": is_correct,
                 "extraction_failed": not bool(pred_label)  # 标记是否提取失败
-            })
+            }
+            
+            # 立即写入文件（流式保存，避免中途中断导致数据丢失）
+            if output_fp:
+                output_fp.write(json.dumps(result_item, ensure_ascii=False) + '\n')
+                output_fp.flush()  # 立即刷新到磁盘
         
         if (i + batch_size) % 100 == 0:
             logging.info(f"Processed {min(i + batch_size, len(test_data))}/{len(test_data)}")
+    
+    # 关闭输出文件
+    if output_fp:
+        output_fp.close()
+        logging.info(f"All results saved to: {output_file}")
     
     # 计算指标
     logging.info("\n" + "="*60)
@@ -221,9 +237,16 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
     logging.info(f"  Failed to extract: {failed_extractions} ({failed_extractions/total_samples*100:.2f}%)")
     
     logging.info("\nClassification Report:")
-    report = classification_report(gold_indices, pred_indices, 
-                               target_names=LABEL_SET, digits=4, 
-                               zero_division=0)
+    # 只统计真实的标签类别（0-6），忽略提取失败的 -1
+    valid_label_indices = list(range(len(LABEL_SET)))
+    report = classification_report(
+        gold_indices, 
+        pred_indices, 
+        labels=valid_label_indices,  # 明确指定只统计这 7 个类别
+        target_names=LABEL_SET, 
+        digits=4, 
+        zero_division=0
+    )
     logging.info("\n" + report)
     
     # 真实标签分布
@@ -259,7 +282,7 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
         "accuracy": acc,
         "f1_weighted": f1_weighted,
         "f1_macro": f1_macro
-    }, detailed_results
+    }
 
 
 def main():
@@ -287,9 +310,6 @@ def main():
     logging.info(f"Batch size: {args.batch_size}")
     logging.info("="*60 + "\n")
     
-    # 执行评估
-    results, detailed_results = evaluate(args.model_path, args.test_file, args.batch_size)
-    
     # 生成时间戳和模型名称
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     model_name = os.path.basename(args.model_path.rstrip('/\\'))
@@ -297,16 +317,17 @@ def main():
     # 确保 logs 目录存在
     os.makedirs("logs", exist_ok=True)
     
-    # 保存评估指标
-    output_file = f"logs/eval_results_{model_name}_{timestamp}.json"
-    with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(results, f, indent=2)
-    logging.info(f"\nResults saved to: {output_file}")
+    # 准备输出文件路径
+    detailed_output_file = f"logs/detailed_outputs_{model_name}_{timestamp}.jsonl"
     
-    # 保存详细输出结果
-    detailed_output_file = f"logs/detailed_outputs_{model_name}_{timestamp}.json"
-    with open(detailed_output_file, 'w', encoding='utf-8') as f:
-        json.dump(detailed_results, f, indent=2, ensure_ascii=False)
+    # 执行评估（结果会流式写入 detailed_output_file）
+    results = evaluate(args.model_path, args.test_file, args.batch_size, detailed_output_file)
+    
+    # 保存评估指标
+    metrics_file = f"logs/eval_results_{model_name}_{timestamp}.json"
+    with open(metrics_file, 'w', encoding='utf-8') as f:
+        json.dump(results, f, indent=2)
+    logging.info(f"\nMetrics saved to: {metrics_file}")
     logging.info(f"Detailed outputs saved to: {detailed_output_file}")
     
     logging.info(f"Log saved to: {log_file}")
