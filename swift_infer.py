@@ -84,16 +84,40 @@ def load_test_data(test_file: str) -> List[Dict]:
 
 
 def extract_label(response: str) -> str:
-    """从模型响应中提取标签"""
+    """
+    从模型响应中提取标签
+    
+    策略：遍历所有标签，找出在模型输出中位置最靠前的标签
+    如果没有找到任何标签，返回空字符串
+    """
     response = response.strip().lower()
     
-    # 直接匹配
-    for label in LABEL_SET:
-        if label.lower() in response:
-            return label
+    # 如果响应为空，返回空字符串
+    if not response:
+        return ""
     
-    # 如果没找到，返回最可能的（基于编辑距离）
-    return response.split()[0] if response else "neutral"
+    # 方法1: 找出所有标签在response中的位置，返回位置最靠前的
+    label_positions = {}
+    for label in LABEL_SET:
+        pos = response.find(label.lower())
+        if pos != -1:  # 找到了该标签
+            label_positions[label] = pos
+    
+    # 如果找到了标签，返回位置最靠前的
+    if label_positions:
+        # 按位置排序，返回位置最小（最靠前）的标签
+        earliest_label = min(label_positions, key=label_positions.get)
+        return earliest_label
+    
+    # 方法2: 如果没有找到任何标签，尝试按单词匹配（避免子串匹配问题）
+    words = response.split()
+    for word in words:
+        word_clean = word.strip('.,!?;:"\'-')
+        if word_clean in LABEL_SET:
+            return word_clean
+    
+    # 如果都没找到，返回空字符串（表示未能提取到标签）
+    return ""
 
 
 def evaluate(model_path: str, test_file: str, batch_size: int = 8):
@@ -120,6 +144,7 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
     predictions = []
     ground_truths = []
     raw_outputs = []  # 保存原始输出
+    detailed_results = []  # 保存详细结果（包含输入输出）
     
     request_config = RequestConfig(
         max_tokens=20,
@@ -142,11 +167,27 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
         # 推理
         responses = engine.infer(infer_requests, request_config=request_config)
         
-        for resp in responses:
+        for idx, resp in enumerate(responses):
             raw_output = resp.choices[0].message.content
             raw_outputs.append(raw_output)
             pred_label = extract_label(raw_output)
             predictions.append(pred_label)
+            
+            # 保存详细结果
+            sample_idx = i + idx
+            ground_truth = batch[idx]["messages"][2]["content"]
+            # 空标签表示未能提取到有效标签，算作预测错误
+            is_correct = (pred_label == ground_truth) if pred_label else False
+            
+            detailed_results.append({
+                "index": sample_idx,
+                "input_messages": batch[idx]["messages"][:2],  # system + user
+                "ground_truth": ground_truth,
+                "model_output": raw_output,
+                "predicted_label": pred_label if pred_label else "",  # 空标签记录为空字符串
+                "is_correct": is_correct,
+                "extraction_failed": not bool(pred_label)  # 标记是否提取失败
+            })
         
         if (i + batch_size) % 100 == 0:
             logging.info(f"Processed {min(i + batch_size, len(test_data))}/{len(test_data)}")
@@ -159,16 +200,25 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
     # 转换为数字标签
     label_to_idx = {label: idx for idx, label in enumerate(LABEL_SET)}
     
-    pred_indices = [label_to_idx.get(p, 0) for p in predictions]
+    # 对于空标签（提取失败），映射到 -1（不存在的类别）
+    pred_indices = [label_to_idx.get(p, -1) if p else -1 for p in predictions]
     gold_indices = [label_to_idx.get(g, 0) for g in ground_truths]
     
     acc = accuracy_score(gold_indices, pred_indices)
     f1_weighted = f1_score(gold_indices, pred_indices, average='weighted')
     f1_macro = f1_score(gold_indices, pred_indices, average='macro')
     
+    # 统计提取失败的样本数
+    failed_extractions = sum(1 for p in predictions if not p)
+    total_samples = len(predictions)
+    
     logging.info(f"\nAccuracy: {acc*100:.2f}%")
     logging.info(f"Weighted F1: {f1_weighted*100:.2f}%")
     logging.info(f"Macro F1: {f1_macro*100:.2f}%")
+    logging.info(f"\nLabel Extraction Statistics:")
+    logging.info(f"  Total samples: {total_samples}")
+    logging.info(f"  Successfully extracted: {total_samples - failed_extractions} ({(total_samples - failed_extractions)/total_samples*100:.2f}%)")
+    logging.info(f"  Failed to extract: {failed_extractions} ({failed_extractions/total_samples*100:.2f}%)")
     
     logging.info("\nClassification Report:")
     report = classification_report(gold_indices, pred_indices, 
@@ -189,6 +239,10 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
     for label in LABEL_SET:
         count = pred_counter.get(label, 0)
         logging.info(f"  {label}: {count} ({count/len(predictions)*100:.1f}%)")
+    # 统计空标签（提取失败）
+    empty_count = pred_counter.get("", 0)
+    if empty_count > 0:
+        logging.info(f"  [EMPTY - Extraction Failed]: {empty_count} ({empty_count/len(predictions)*100:.1f}%)")
     
     # 显示一些预测示例
     logging.info("\n" + "="*60)
@@ -197,7 +251,7 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
     for i in range(min(5, len(predictions))):
         logging.info(f"\n#{i+1}")
         logging.info(f"  True Label:    {ground_truths[i]}")
-        logging.info(f"  Predicted:     {predictions[i]}")
+        logging.info(f"  Predicted:     {predictions[i] if predictions[i] else '[EMPTY - Failed to extract]'}")
         logging.info(f"  Raw Output:    {raw_outputs[i][:100]}...")  # 截取前100字符
         logging.info(f"  Match:         {'✓' if predictions[i] == ground_truths[i] else '✗'}")
     
@@ -205,7 +259,7 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
         "accuracy": acc,
         "f1_weighted": f1_weighted,
         "f1_macro": f1_macro
-    }
+    }, detailed_results
 
 
 def main():
@@ -234,13 +288,27 @@ def main():
     logging.info("="*60 + "\n")
     
     # 执行评估
-    results = evaluate(args.model_path, args.test_file, args.batch_size)
+    results, detailed_results = evaluate(args.model_path, args.test_file, args.batch_size)
     
-    # 保存结果
-    output_file = os.path.join(os.path.dirname(args.model_path), "eval_results.json")
-    with open(output_file, 'w') as f:
+    # 生成时间戳和模型名称
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    model_name = os.path.basename(args.model_path.rstrip('/\\'))
+    
+    # 确保 logs 目录存在
+    os.makedirs("logs", exist_ok=True)
+    
+    # 保存评估指标
+    output_file = f"logs/eval_results_{model_name}_{timestamp}.json"
+    with open(output_file, 'w', encoding='utf-8') as f:
         json.dump(results, f, indent=2)
     logging.info(f"\nResults saved to: {output_file}")
+    
+    # 保存详细输出结果
+    detailed_output_file = f"logs/detailed_outputs_{model_name}_{timestamp}.json"
+    with open(detailed_output_file, 'w', encoding='utf-8') as f:
+        json.dump(detailed_results, f, indent=2, ensure_ascii=False)
+    logging.info(f"Detailed outputs saved to: {detailed_output_file}")
+    
     logging.info(f"Log saved to: {log_file}")
     logging.info("\n" + "="*60)
     logging.info("Inference completed successfully!")
