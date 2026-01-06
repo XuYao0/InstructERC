@@ -27,8 +27,27 @@ $VAL_DATASET = "swift_data/meld/valid.jsonl"
 # 输出目录
 $OUTPUT_DIR = "experiments/swift_meld_qwen"
 
+# ==================== 日志配置 ====================
+
+# 创建 logs 目录
+if (-not (Test-Path -Path "logs")) {
+    New-Item -ItemType Directory -Path "logs" | Out-Null
+}
+
+# 生成日志文件名（包含时间戳）
+$TIMESTAMP = Get-Date -Format "yyyyMMdd_HHmmss"
+$LOG_FILE = "logs/train_$TIMESTAMP.log"
+
+Write-Host "=================================================="
+Write-Host "MELD Emotion Recognition - Training"
+Write-Host "=================================================="
+Write-Host "训练日志将保存到: $LOG_FILE"
+Write-Host "=================================================="
+Write-Host ""
+
 # ==================== LoRA 训练 ====================
 
+# 使用 Tee-Object 命令同时输出到控制台和日志文件
 swift sft `
     --model $MODEL_PATH `
     --train_type lora `
@@ -50,5 +69,12 @@ swift sft `
     --lora_dropout 0.05 `
     --target_modules all-linear `
     --max_length 2048 `
-    --gradient_checkpointing true
+    --gradient_checkpointing true `
+    2>&1 | Tee-Object -FilePath $LOG_FILE
+
+# 训练完成提示
+Write-Host ""
+Write-Host "=================================================="
+Write-Host "训练完成！日志已保存到: $LOG_FILE"
+Write-Host "=================================================="
 

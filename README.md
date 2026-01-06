@@ -111,6 +111,26 @@ As shown in the tree-like structure above, InstructERC consists of the following
 
 - The original_data folder contains the widely used datasets processed by the COSMIC team, including IEMOCAP, MELD, EmoryNLP, and dailydialog. We write a script for you to have a peek of these datasets, namely peek_of_dataset.ipynb.
 
+### 📋 Logging Feature
+
+**NEW**: All training and inference scripts now support comprehensive logging functionality! 🎉
+
+- ✅ **Dual Output**: Logs are saved to files while still displayed in console
+- ✅ **Automatic Timestamps**: Log files are named with timestamps for easy tracking
+- ✅ **Complete Records**: All training/inference outputs are captured
+- 📚 **Detailed Guide**: See [LOGGING_GUIDE.md](LOGGING_GUIDE.md) for complete documentation
+
+**Quick Example:**
+```bash
+# Training (logs automatically saved to logs/train_YYYYMMDD_HHMMSS.log)
+bash swift_train.sh
+
+# Inference (logs automatically saved to logs/inference_YYYYMMDD_HHMMSS.log)
+python swift_infer.py --model_path /path/to/model --test_file swift_data/meld/test.jsonl
+```
+
+For more details, please refer to the complete [Logging Guide](LOGGING_GUIDE.md).
+
 ### Dependencies
 We suggest you create a docker environment for InstructERC to ensure that your previous systems, libraries and files are not effected.
 Make sure your Devtoolset-8-toolchain' version align with us:

@@ -28,9 +28,26 @@ VAL_DATASET="swift_data/meld/valid.jsonl"
 # 输出目录
 OUTPUT_DIR="experiments/swift_meld_qwen"
 
+# ==================== 日志配置 ====================
+
+# 创建 logs 目录
+mkdir -p logs
+
+# 生成日志文件名（包含时间戳）
+TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
+LOG_FILE="logs/train_${TIMESTAMP}.log"
+
+echo "=================================================="
+echo "MELD Emotion Recognition - Training"
+echo "=================================================="
+echo "训练日志将保存到: $LOG_FILE"
+echo "=================================================="
+echo ""
+
 # ==================== 训练参数 ====================
 
 # LoRA 微调 (推荐，显存占用小)
+# 使用 tee 命令同时输出到控制台和日志文件
 swift sft \
     --model $MODEL_PATH \
     --train_type lora \
@@ -53,7 +70,14 @@ swift sft \
     --target_modules all-linear \
     --max_length 2048 \
     --gradient_checkpointing true \
-    --deepspeed zero2
+    --deepspeed zero2 \
+    2>&1 | tee "$LOG_FILE"
+
+# 训练完成提示
+echo ""
+echo "=================================================="
+echo "训练完成！日志已保存到: $LOG_FILE"
+echo "=================================================="
 
 
 # ==================== 其他训练方式示例 ====================
