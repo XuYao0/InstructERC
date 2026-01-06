@@ -63,6 +63,7 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
     # 准备推理请求
     predictions = []
     ground_truths = []
+    raw_outputs = []  # 保存原始输出
     
     request_config = RequestConfig(
         max_tokens=20,
@@ -86,7 +87,9 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
         responses = engine.infer(infer_requests, request_config=request_config)
         
         for resp in responses:
-            pred_label = extract_label(resp.choices[0].message.content)
+            raw_output = resp.choices[0].message.content
+            raw_outputs.append(raw_output)
+            pred_label = extract_label(raw_output)
             predictions.append(pred_label)
         
         if (i + batch_size) % 100 == 0:
@@ -113,7 +116,15 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
     
     print("\nClassification Report:")
     print(classification_report(gold_indices, pred_indices, 
-                               target_names=LABEL_SET, digits=4))
+                               target_names=LABEL_SET, digits=4, 
+                               zero_division=0))
+    
+    # 真实标签分布
+    print("\nGround Truth Distribution:")
+    truth_counter = Counter(ground_truths)
+    for label in LABEL_SET:
+        count = truth_counter.get(label, 0)
+        print(f"  {label}: {count} ({count/len(ground_truths)*100:.1f}%)")
     
     # 预测分布
     print("\nPrediction Distribution:")
@@ -121,6 +132,17 @@ def evaluate(model_path: str, test_file: str, batch_size: int = 8):
     for label in LABEL_SET:
         count = pred_counter.get(label, 0)
         print(f"  {label}: {count} ({count/len(predictions)*100:.1f}%)")
+    
+    # 显示一些预测示例
+    print("\n" + "="*60)
+    print("Sample Predictions (first 5):")
+    print("="*60)
+    for i in range(min(5, len(predictions))):
+        print(f"\n#{i+1}")
+        print(f"  True Label:    {ground_truths[i]}")
+        print(f"  Predicted:     {predictions[i]}")
+        print(f"  Raw Output:    {raw_outputs[i][:100]}...")  # 截取前100字符
+        print(f"  Match:         {'✓' if predictions[i] == ground_truths[i] else '✗'}")
     
     return {
         "accuracy": acc,
