@@ -1,0 +1,30 @@
+2026-01-06 13:32:21 - INFO - ============================================================
+2026-01-06 13:32:21 - INFO - MELD Emotion Recognition - Inference & Evaluation
+2026-01-06 13:32:21 - INFO - ============================================================
+2026-01-06 13:32:21 - INFO - Log file: logs/inference_20260106_133221.log
+2026-01-06 13:32:21 - INFO - Model: /home/xuyao/data/qwen2.5-3b-instruct
+2026-01-06 13:32:21 - INFO - Test data: ./swift_data/meld/test_sampled_256.jsonl
+2026-01-06 13:32:21 - INFO - Batch size: 8
+2026-01-06 13:32:21 - INFO - ============================================================
+
+2026-01-06 13:32:21 - INFO - Loading model from: /home/xuyao/data/qwen2.5-3b-instruct
+2026-01-06 13:32:21 - INFO - Loading test data from: ./swift_data/meld/test_sampled_256.jsonl
+2026-01-06 13:32:21 - INFO - Loaded 256 test samples
+2026-01-06 13:32:32 - INFO - 
+Running inference...
+2026-01-06 14:00:29 - INFO - Processed 200/256
+2026-01-06 14:08:29 - INFO - 
+============================================================
+2026-01-06 14:08:29 - INFO - Evaluation Results
+2026-01-06 14:08:29 - INFO - ============================================================
+2026-01-06 14:08:29 - INFO - 
+Accuracy: 51.56%
+2026-01-06 14:08:29 - INFO - Weighted F1: 52.88%
+2026-01-06 14:08:29 - INFO - Macro F1: 32.91%
+2026-01-06 14:08:29 - INFO - 
+Label Extraction Statistics:
+2026-01-06 14:08:29 - INFO -   Total samples: 256
+2026-01-06 14:08:29 - INFO -   Successfully extracted: 255 (99.61%)
+2026-01-06 14:08:29 - INFO -   Failed to extract: 1 (0.39%)
+2026-01-06 14:08:29 - INFO - 
+Classification Report:

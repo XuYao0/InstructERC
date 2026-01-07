@@ -1,0 +1,107 @@
+2026-01-06 14:15:59 - INFO - ============================================================
+2026-01-06 14:15:59 - INFO - MELD Emotion Recognition - Inference & Evaluation
+2026-01-06 14:15:59 - INFO - ============================================================
+2026-01-06 14:15:59 - INFO - Log file: logs/inference_20260106_141559.log
+2026-01-06 14:15:59 - INFO - Model: /home/xuyao/data/qwen2.5-3b-instruct
+2026-01-06 14:15:59 - INFO - Test data: ./swift_data/meld/test_sampled_256.jsonl
+2026-01-06 14:15:59 - INFO - Batch size: 8
+2026-01-06 14:15:59 - INFO - ============================================================
+
+2026-01-06 14:15:59 - INFO - Loading model from: /home/xuyao/data/qwen2.5-3b-instruct
+2026-01-06 14:15:59 - INFO - Loading test data from: ./swift_data/meld/test_sampled_256.jsonl
+2026-01-06 14:15:59 - INFO - Loaded 256 test samples
+2026-01-06 14:16:08 - INFO - 
+Running inference...
+2026-01-06 14:16:08 - INFO - Streaming results to: logs/detailed_outputs_qwen2.5-3b-instruct_20260106_141559.jsonl
+2026-01-06 14:42:33 - INFO - Processed 200/256
+2026-01-06 14:50:07 - INFO - All results saved to: logs/detailed_outputs_qwen2.5-3b-instruct_20260106_141559.jsonl
+2026-01-06 14:50:07 - INFO - 
+============================================================
+2026-01-06 14:50:07 - INFO - Evaluation Results
+2026-01-06 14:50:07 - INFO - ============================================================
+2026-01-06 14:50:07 - INFO - 
+Accuracy: 51.56%
+2026-01-06 14:50:07 - INFO - Weighted F1: 52.88%
+2026-01-06 14:50:07 - INFO - Macro F1: 32.91%
+2026-01-06 14:50:07 - INFO - 
+Label Extraction Statistics:
+2026-01-06 14:50:07 - INFO -   Total samples: 256
+2026-01-06 14:50:07 - INFO -   Successfully extracted: 255 (99.61%)
+2026-01-06 14:50:07 - INFO -   Failed to extract: 1 (0.39%)
+2026-01-06 14:50:07 - INFO - 
+Classification Report:
+2026-01-06 14:50:08 - INFO - 
+              precision    recall  f1-score   support
+
+     neutral     0.7634    0.5504    0.6396       129
+    surprise     0.2558    0.5238    0.3438        21
+        fear     0.0000    0.0000    0.0000         8
+         sad     0.3158    0.2727    0.2927        22
+      joyful     0.6429    0.4390    0.5217        41
+     disgust     0.2000    0.6667    0.3077         3
+       angry     0.4068    0.7500    0.5275        32
+
+   micro avg     0.5176    0.5156    0.5166       256
+   macro avg     0.3692    0.4575    0.3761       256
+weighted avg     0.5890    0.5156    0.5288       256
+
+2026-01-06 14:50:08 - INFO - 
+Ground Truth Distribution:
+2026-01-06 14:50:08 - INFO -   neutral: 129 (50.4%)
+2026-01-06 14:50:08 - INFO -   surprise: 21 (8.2%)
+2026-01-06 14:50:08 - INFO -   fear: 8 (3.1%)
+2026-01-06 14:50:08 - INFO -   sad: 22 (8.6%)
+2026-01-06 14:50:08 - INFO -   joyful: 41 (16.0%)
+2026-01-06 14:50:08 - INFO -   disgust: 3 (1.2%)
+2026-01-06 14:50:08 - INFO -   angry: 32 (12.5%)
+2026-01-06 14:50:08 - INFO - 
+Prediction Distribution:
+2026-01-06 14:50:08 - INFO -   neutral: 93 (36.3%)
+2026-01-06 14:50:08 - INFO -   surprise: 43 (16.8%)
+2026-01-06 14:50:08 - INFO -   fear: 3 (1.2%)
+2026-01-06 14:50:08 - INFO -   sad: 19 (7.4%)
+2026-01-06 14:50:08 - INFO -   joyful: 28 (10.9%)
+2026-01-06 14:50:08 - INFO -   disgust: 10 (3.9%)
+2026-01-06 14:50:08 - INFO -   angry: 59 (23.0%)
+2026-01-06 14:50:08 - INFO -   [EMPTY - Extraction Failed]: 1 (0.4%)
+2026-01-06 14:50:08 - INFO - 
+============================================================
+2026-01-06 14:50:08 - INFO - Sample Predictions (first 5):
+2026-01-06 14:50:08 - INFO - ============================================================
+2026-01-06 14:50:08 - INFO - 
+#1
+2026-01-06 14:50:08 - INFO -   True Label:    neutral
+2026-01-06 14:50:08 - INFO -   Predicted:     neutral
+2026-01-06 14:50:08 - INFO -   Raw Output:    The emotional label for <Speaker_2:"Good."> in this context is **neutral**. The statement "Good" ind...
+2026-01-06 14:50:08 - INFO -   Match:         ✓
+2026-01-06 14:50:08 - INFO - 
+#2
+2026-01-06 14:50:08 - INFO -   True Label:    neutral
+2026-01-06 14:50:08 - INFO -   Predicted:     neutral
+2026-01-06 14:50:08 - INFO -   Raw Output:    The emotional label for <Speaker_2:"You guys, I'm sorry, could you please talk a little slower?"> is...
+2026-01-06 14:50:08 - INFO -   Match:         ✓
+2026-01-06 14:50:08 - INFO - 
+#3
+2026-01-06 14:50:08 - INFO -   True Label:    neutral
+2026-01-06 14:50:08 - INFO -   Predicted:     neutral
+2026-01-06 14:50:08 - INFO -   Raw Output:    The response "Hey" from Speaker_1 in this context does not clearly indicate any specific emotion fro...
+2026-01-06 14:50:08 - INFO -   Match:         ✓
+2026-01-06 14:50:08 - INFO - 
+#4
+2026-01-06 14:50:08 - INFO -   True Label:    neutral
+2026-01-06 14:50:08 - INFO -   Predicted:     neutral
+2026-01-06 14:50:08 - INFO -   Raw Output:    Based on the context provided, the emotional label that best fits for <Speaker_1:"Joey, what's it li...
+2026-01-06 14:50:08 - INFO -   Match:         ✓
+2026-01-06 14:50:08 - INFO - 
+#5
+2026-01-06 14:50:08 - INFO -   True Label:    neutral
+2026-01-06 14:50:08 - INFO -   Predicted:     neutral
+2026-01-06 14:50:08 - INFO -   Raw Output:    Based on the context provided, the emotional label that best fits for <Speaker_0:"Yeah."> is **neutr...
+2026-01-06 14:50:08 - INFO -   Match:         ✓
+2026-01-06 14:50:08 - INFO - 
+Metrics saved to: logs/eval_results_qwen2.5-3b-instruct_20260106_141559.json
+2026-01-06 14:50:08 - INFO - Detailed outputs saved to: logs/detailed_outputs_qwen2.5-3b-instruct_20260106_141559.jsonl
+2026-01-06 14:50:08 - INFO - Log saved to: logs/inference_20260106_141559.log
+2026-01-06 14:50:08 - INFO - 
+============================================================
+2026-01-06 14:50:08 - INFO - Inference completed successfully!

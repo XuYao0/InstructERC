@@ -1,0 +1,97 @@
+2026-01-06 10:43:09 - INFO - ============================================================
+2026-01-06 10:43:09 - INFO - MELD Emotion Recognition - Inference & Evaluation
+2026-01-06 10:43:09 - INFO - ============================================================
+2026-01-06 10:43:09 - INFO - Log file: logs/inference_20260106_104309.log
+2026-01-06 10:43:09 - INFO - Model: /home/xuyao/data/qwen2.5-3b-instruct
+2026-01-06 10:43:09 - INFO - Test data: ./swift_data/meld/valid_sampled_128.jsonl
+2026-01-06 10:43:09 - INFO - Batch size: 8
+2026-01-06 10:43:09 - INFO - ============================================================
+
+2026-01-06 10:43:09 - INFO - Loading model from: /home/xuyao/data/qwen2.5-3b-instruct
+2026-01-06 10:43:09 - INFO - Loading test data from: ./swift_data/meld/valid_sampled_128.jsonl
+2026-01-06 10:43:09 - INFO - Loaded 128 test samples
+2026-01-06 10:43:17 - INFO - 
+Running inference...
+2026-01-06 10:48:33 - INFO - 
+============================================================
+2026-01-06 10:48:33 - INFO - Evaluation Results
+2026-01-06 10:48:33 - INFO - ============================================================
+2026-01-06 10:48:33 - INFO - 
+Accuracy: 37.50%
+2026-01-06 10:48:33 - INFO - Weighted F1: 25.40%
+2026-01-06 10:48:33 - INFO - Macro F1: 13.95%
+2026-01-06 10:48:33 - INFO - 
+Classification Report:
+2026-01-06 10:48:33 - INFO - 
+              precision    recall  f1-score   support
+
+     neutral     0.3644    0.9556    0.5276        45
+    surprise     0.5000    0.0625    0.1111        16
+        fear     0.0000    0.0000    0.0000         5
+         sad     0.0000    0.0000    0.0000        17
+      joyful     1.0000    0.1500    0.2609        20
+     disgust     0.0000    0.0000    0.0000         2
+       angry     0.3333    0.0435    0.0769        23
+
+    accuracy                         0.3750       128
+   macro avg     0.3140    0.1731    0.1395       128
+weighted avg     0.4068    0.3750    0.2540       128
+
+2026-01-06 10:48:33 - INFO - 
+Ground Truth Distribution:
+2026-01-06 10:48:33 - INFO -   neutral: 45 (35.2%)
+2026-01-06 10:48:33 - INFO -   surprise: 16 (12.5%)
+2026-01-06 10:48:33 - INFO -   fear: 5 (3.9%)
+2026-01-06 10:48:33 - INFO -   sad: 17 (13.3%)
+2026-01-06 10:48:33 - INFO -   joyful: 20 (15.6%)
+2026-01-06 10:48:33 - INFO -   disgust: 2 (1.6%)
+2026-01-06 10:48:33 - INFO -   angry: 23 (18.0%)
+2026-01-06 10:48:33 - INFO - 
+Prediction Distribution:
+2026-01-06 10:48:33 - INFO -   neutral: 7 (5.5%)
+2026-01-06 10:48:33 - INFO -   surprise: 2 (1.6%)
+2026-01-06 10:48:33 - INFO -   fear: 0 (0.0%)
+2026-01-06 10:48:33 - INFO -   sad: 1 (0.8%)
+2026-01-06 10:48:33 - INFO -   joyful: 3 (2.3%)
+2026-01-06 10:48:33 - INFO -   disgust: 1 (0.8%)
+2026-01-06 10:48:33 - INFO -   angry: 3 (2.3%)
+2026-01-06 10:48:33 - INFO - 
+============================================================
+2026-01-06 10:48:33 - INFO - Sample Predictions (first 5):
+2026-01-06 10:48:33 - INFO - ============================================================
+2026-01-06 10:48:33 - INFO - 
+#1
+2026-01-06 10:48:33 - INFO -   True Label:    neutral
+2026-01-06 10:48:33 - INFO -   Predicted:     neutral
+2026-01-06 10:48:33 - INFO -   Raw Output:    The given statement by Speaker_0 seems to be neutral in emotional tone. The speaker is simply inform...
+2026-01-06 10:48:33 - INFO -   Match:         ✓
+2026-01-06 10:48:33 - INFO - 
+#2
+2026-01-06 10:48:33 - INFO -   True Label:    sad
+2026-01-06 10:48:33 - INFO -   Predicted:     based
+2026-01-06 10:48:33 - INFO -   Raw Output:    Based on the context provided in the conversation, the emotional label that best fits for "Oh, god...
+2026-01-06 10:48:33 - INFO -   Match:         ✗
+2026-01-06 10:48:33 - INFO - 
+#3
+2026-01-06 10:48:33 - INFO -   True Label:    neutral
+2026-01-06 10:48:33 - INFO -   Predicted:     surprise
+2026-01-06 10:48:33 - INFO -   Raw Output:    In this context, the most appropriate emotional label for Speaker_1's statement would be "surprise...
+2026-01-06 10:48:33 - INFO -   Match:         ✗
+2026-01-06 10:48:33 - INFO - 
+#4
+2026-01-06 10:48:33 - INFO -   True Label:    neutral
+2026-01-06 10:48:33 - INFO -   Predicted:     in
+2026-01-06 10:48:33 - INFO -   Raw Output:    In this context, the emotional label that best fits the statement "<Speaker_0:"Perhaps, ...
+2026-01-06 10:48:33 - INFO -   Match:         ✗
+2026-01-06 10:48:33 - INFO - 
+#5
+2026-01-06 10:48:33 - INFO -   True Label:    neutral
+2026-01-06 10:48:33 - INFO -   Predicted:     neutral
+2026-01-06 10:48:33 - INFO -   Raw Output:    The emotion in Speaker_4's statement "What's the charity?" seems neutral. The speaker is...
+2026-01-06 10:48:33 - INFO -   Match:         ✓
+2026-01-06 10:48:33 - INFO - 
+Results saved to: /home/xuyao/data/eval_results.json
+2026-01-06 10:48:33 - INFO - Log saved to: logs/inference_20260106_104309.log
+2026-01-06 10:48:33 - INFO - 
+============================================================
+2026-01-06 10:48:33 - INFO - Inference completed successfully!

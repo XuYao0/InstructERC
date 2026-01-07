@@ -1,0 +1,1190 @@
+2026-01-06 11:37:43 - INFO - ============================================================
+2026-01-06 11:37:43 - INFO - MELD Emotion Recognition - Inference & Evaluation
+2026-01-06 11:37:43 - INFO - ============================================================
+2026-01-06 11:37:43 - INFO - Log file: logs/inference_20260106_113743.log
+2026-01-06 11:37:43 - INFO - Model: /home/xuyao/data/qwen3-4B-Instruct-2507
+2026-01-06 11:37:43 - INFO - Test data: ./swift_data/meld/test_sampled_256.jsonl
+2026-01-06 11:37:43 - INFO - Batch size: 8
+2026-01-06 11:37:43 - INFO - ============================================================
+
+2026-01-06 11:37:43 - INFO - Loading model from: /home/xuyao/data/qwen3-4B-Instruct-2507
+2026-01-06 11:37:43 - INFO - Loading test data from: ./swift_data/meld/test_sampled_256.jsonl
+2026-01-06 11:37:43 - INFO - Loaded 256 test samples
+2026-01-06 11:38:31 - INFO - 
+Running inference...
+2026-01-06 12:45:26 - INFO - Processed 200/256
+2026-01-06 13:03:07 - INFO - 
+============================================================
+2026-01-06 13:03:07 - INFO - Evaluation Results
+2026-01-06 13:03:07 - INFO - ============================================================
+2026-01-06 13:03:07 - INFO - 
+Accuracy: 44.53%
+2026-01-06 13:03:07 - INFO - Weighted F1: 40.56%
+2026-01-06 13:03:07 - INFO - Macro F1: 17.90%
+2026-01-06 13:03:07 - INFO - 
+Classification Report:
+2026-01-06 13:03:07 - INFO - 
+              precision    recall  f1-score   support
+
+     neutral     0.6644    0.7519    0.7055       129
+    surprise     0.1212    0.5714    0.2000        21
+        fear     0.2000    0.1250    0.1538         8
+         sad     0.0000    0.0000    0.0000        22
+      joyful     0.7500    0.0732    0.1333        41
+     disgust     0.0000    0.0000    0.0000         3
+       angry     1.0000    0.0312    0.0606        32
+
+    accuracy                         0.4453       256
+   macro avg     0.3908    0.2218    0.1790       256
+weighted avg     0.5961    0.4453    0.4056       256
+
+2026-01-06 13:03:07 - INFO - 
+Ground Truth Distribution:
+2026-01-06 13:03:07 - INFO -   neutral: 129 (50.4%)
+2026-01-06 13:03:07 - INFO -   surprise: 21 (8.2%)
+2026-01-06 13:03:07 - INFO -   fear: 8 (3.1%)
+2026-01-06 13:03:07 - INFO -   sad: 22 (8.6%)
+2026-01-06 13:03:07 - INFO -   joyful: 41 (16.0%)
+2026-01-06 13:03:07 - INFO -   disgust: 3 (1.2%)
+2026-01-06 13:03:07 - INFO -   angry: 32 (12.5%)
+2026-01-06 13:03:07 - INFO - 
+Prediction Distribution:
+2026-01-06 13:03:07 - INFO -   neutral: 146 (57.0%)
+2026-01-06 13:03:07 - INFO -   surprise: 99 (38.7%)
+2026-01-06 13:03:07 - INFO -   fear: 5 (2.0%)
+2026-01-06 13:03:07 - INFO -   sad: 1 (0.4%)
+2026-01-06 13:03:07 - INFO -   joyful: 4 (1.6%)
+2026-01-06 13:03:07 - INFO -   disgust: 0 (0.0%)
+2026-01-06 13:03:07 - INFO -   angry: 1 (0.4%)
+2026-01-06 13:03:07 - INFO - 
+============================================================
+2026-01-06 13:03:07 - INFO - Sample Predictions (first 5):
+2026-01-06 13:03:07 - INFO - ============================================================
+2026-01-06 13:03:07 - INFO - 
+#1
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_2:"Good."> is: **neutral**.
+
+Explanation: Speaker_2 responds with "Good" to a question about the doctor's visit. This is a simple, factual, and non-emotive acknowledgment. There is no indication of joy, surprise, fear, sadness, anger, or disgust. It reflects a neutral, calm reaction.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#2
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_2:"You guys, I'm sorry, could you please talk a little slower?"> is: **neutral**.
+
+Explanation: Speaker_2 is expressing a request for clarity or patience, likely due to the back-and-forth confusion in the conversation. There is no clear indication of surprise, fear, sadness, joy, disgust, or anger. The tone is polite and calm, indicating a neutral emotional state.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#3
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_1:"Hey."> is: **neutral**.
+
+Explanation: "Hey" is a simple, friendly greeting that typically conveys a neutral or polite tone in a casual conversation. There is no indication of surprise, joy, fear, sadness, anger, or disgust in the phrase. It is a standard social response, fitting best with a neutral emotional state.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#4
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_1:"Joey, what's it like on a movie set, huh?"> is: **joyful**.
+
+Explanation: Speaker_1 is engaging in a friendly, light-hearted conversation with Joey, recalling a past connection and showing interest in Joey's current life. The tone is warm, curious, and affectionate, indicating a joyful and positive emotional state. There is no sign of surprise, fear, sadness, disgust, or anger. The use of "huh?" suggests curiosity and genuine interest, which aligns with a joyful and upbeat tone.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#5
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_0:"Yeah."> is: **neutral**.
+
+Explanation: The phrase "Yeah." in this context is a simple, understated response that follows a narrative about a humorous and slightly absurd situation (being locked in a unit). It does not convey surprise, fear, joy, anger, sadness, or disgust. It serves as a mild affirmation or continuation of the story, indicating a neutral emotional tone.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#6
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The most appropriate emotional label for <Speaker_2:"The guy left this."> is: **surprise**.
+
+Explanation: Speaker_2 has just shared that the guy left something behind, which introduces a new and unexpected detail in the conversation. This moment follows a sequence of revelations about Rachel’s potential pregnancy and a possible affair, and the statement "The guy left this" suggests a sudden, unanticipated development. While there could be a hint of curiosity or even mild tension, the emotional tone is best captured by **surprise**—a reaction to an unexpected physical clue that adds new information to the situation. It is not fear, joy, anger, disgust, sadness, or neutrality in tone.
+
+✅ Final answer: **surprise**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#7
+2026-01-06 13:03:07 - INFO -   True Label:    angry
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement:  
+**"Chandler, we said we would meet at the coffeehouse at six."**  
+is: **neutral**.
+
+Explanation: The statement is a straightforward, factual reminder of a previously agreed-upon meeting time. There is no indication of emotion such as joy, anger, surprise, fear, sadness, or disgust. It is simply a neutral assertion of a scheduled meeting.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#8
+2026-01-06 13:03:07 - INFO -   True Label:    disgust
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement:  
+**"I also have to find a new video store, a new bank, a new adult bookstore, a new grocery store"**  
+is: **sad**.
+
+### Reasoning:
+While the statement is factual and lists a series of changes, the context reveals that Speaker_0 is reacting to a negative personal experience — a date with a "creep" who goes to a specific dry cleaner. The need to change multiple institutions (video store, bank, adult bookstore, grocery store) suggests a sense of loss, disruption, and emotional fatigue. This reflects a **sad** tone, as the speaker is dealing with the aftermath of a harmful interaction and the resulting need to rebuild trust and routine in their life.
+
+There is no overt surprise, fear, joy, disgust, or anger in the tone of the statement itself — it's more subdued and reflective, indicating sadness over the situation.
+
+✅ Final answer: **sad**
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#9
+2026-01-06 13:03:07 - INFO -   True Label:    sad
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"Speaker_1: I'm gonna give you my weeks notice."** is most appropriately:
+
+**sad**
+
+### Reasoning:
+While the statement is factual and direct, the context leading up to it reveals deep emotional undercurrents. Speaker_1 expresses a lack of care and disengagement ("I don't care"), indicating a sense of resignation and emotional exhaustion. The phrase "I don't care" is repeated, showing emotional detachment, and the decision to give notice stems from a feeling of not being fulfilled in the role. This reflects a sense of sadness — not anger, fear, or surprise — but rather a quiet, internalized disappointment and disillusionment.
+
+Though there's no overt anger or joy, the resignation and emotional withdrawal point strongly to **sadness** as the dominant emotional state.
+
+✅ Final answer: **sad**
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#10
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_0:"Deeper."> is most appropriately: **neutral**.
+
+Explanation: The phrase "Deeper" in this context follows the statement "You are falling fast asleep," suggesting a continuation of a state of drowsiness or sleep. There is no indication of strong emotion such as surprise, fear, joy, sadness, anger, or disgust. It is a simple, passive continuation of a physical state, reflecting a neutral tone.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#11
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement **"Oh, I gotta get to work. So call me later?"** by Speaker_0 is: **neutral**.
+
+### Reasoning:
+- The statement is a routine, practical transition from a conversation about holiday photos to scheduling a future contact.
+- There is no indication of strong emotion such as joy, surprise, fear, sadness, anger, or disgust.
+- The tone is calm and matter-of-fact, typical of someone ending a conversation with a simple follow-up.
+- While there is a slight hint of warmth in the context (e.g., sharing a photo, holiday card idea), the specific line in question is not emotionally charged.
+
+✅ Therefore, the most accurate emotional label is: **neutral**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#12
+2026-01-06 13:03:07 - INFO -   True Label:    angry
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_0:"'Cause I-I got nothing!"> is: **sad**.
+
+Explanation: Speaker_0 is expressing helplessness and emotional distress over a difficult life decision involving personal relationships. The phrase "I-I got nothing!" reflects a sense of despair and lack of options, which aligns most closely with sadness rather than anger, fear, surprise, or joy. While there is a hint of frustration, the core emotion conveyed is one of emotional exhaustion and sorrow.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#13
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"It is."** from Speaker_1 is most appropriately: **angry**.
+
+### Reasoning:
+- Speaker_1 is firmly defending a belief ("The Celtics problem is they let the players run the team") and is directly countering Speaker_0's disagreement ("Oh, it is." / "It isn't").
+- The tone is assertive and persistent, showing a clear resistance to being dismissed.
+- This back-and-forth suggests a defensive or combative stance, which aligns with **anger** rather than surprise, disgust, or neutral.
+- There is no indication of fear, sadness, joy, or surprise in this specific utterance.
+
+Thus, the best emotional label is: **angry**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#14
+2026-01-06 13:03:07 - INFO -   True Label:    sad
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_1:"Ross, please, I found the magazines!"> is: **disgust**.
+
+**Reasoning:** The statement implies that Speaker_1 is presenting evidence (the magazines) to support a claim that Speaker_2 lied about their sexual preference before marriage. This suggests a confrontational and morally charged situation, where the revelation of a personal lie is being used to undermine the other party. The tone is not joyful, surprised, fearful, or sad — it carries a sense of moral judgment and irritation, which aligns most closely with **disgust**. The phrase "I found the magazines" also implies a deliberate and possibly invasive exposure of private, potentially inappropriate behavior, reinforcing the emotional tone of disgust.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#15
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"Oh, my maple candy!"** from Speaker_1 is: **joyful**.
+
+Explanation: The exclamation "Oh, my maple candy!" expresses excitement and delight upon realizing they have found or are about to lose something they value (maple candy). This is a positive, enthusiastic reaction, indicating joy rather than surprise (which would be more about unexpectedness), fear, sadness, or anger. While "surprise" is possible, the tone and phrasing ("my maple candy") suggest a sense of personal delight and happiness, which aligns best with **joyful**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#16
+2026-01-06 13:03:07 - INFO -   True Label:    surprise
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"Okay. See?! I told ya!"** from Speaker_0 is: **joyful**.
+
+### Reasoning:
+- The phrase "I told ya!" expresses confidence and satisfaction in having proven a point.
+- Speaker_0 is reacting with pride and humor to having successfully fit into the unit, despite earlier claims of being too small.
+- The tone is light, triumphant, and playful — not fearful, surprised, or angry.
+- While there was a moment of fear earlier ("feeling like I was in a coffin"), the current statement is a lighthearted, confident closure of the interaction.
+
+Thus, the most appropriate emotional label is: **joyful**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#17
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for Speaker_1's statement — "So, you heard it, you repeated it, so that must mean you wrote it." — is best interpreted as **disgust**.
+
+### Reasoning:
+- The statement is dismissive and logically flawed. It takes a simple observation (hearing and repeating a song) and incorrectly infers authorship.
+- The tone carries a condescending or mocking undertone, implying that someone who just heard and repeated a song must have written it — which is absurd and shows a lack of respect for the actual creative process.
+- This kind of false attribution, especially in a context where the original artist (Heart) is being referenced, suggests a tone of **disgust** or **contempt** toward the other person's understanding or experience.
+
+While "surprise" or "angry" could be considered, the core emotion here is not surprise or anger but rather a **dismissive, mocking inference** — which aligns most closely
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#18
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement:  
+**"In this case, you have a fear of commitment, so I say you go in there and be the most committed guy there ever was."**  
+is: **joyful**.
+
+### Reasoning:
+Speaker_2 is using a motivational, encouraging tone. They are reframing the fear of commitment as something that can be overcome through action — specifically, by being *the most committed guy ever*. This is not fearful, nor is it surprised, sad, or angry. Instead, it carries a sense of optimism, confidence, and positive encouragement. The phrase "be the most committed guy there ever was" is bold and empowering, suggesting a joyful and proactive attitude toward overcoming fear.
+
+Thus, the most appropriate emotional label is: **joyful**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#19
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"Yeah, you should, really."** from Speaker_3 is most appropriately:
+
+**joyful**
+
+### Reasoning:
+- The context involves a supportive and encouraging tone. Speaker_3 is reinforcing a positive sentiment, encouraging Speaker_0 to pursue intimacy with confidence.
+- The phrase "you should, really" carries a warm, affirming, and encouraging tone, which aligns with **joyful** emotions — not surprise, fear, sadness, disgust, or anger.
+- There is no indication of surprise (no sudden shift), fear (no threat or anxiety), or negative emotions.
+- The overall conversation is lighthearted and supportive, especially given the earlier metaphor about sex and relationships.
+
+Thus, the best emotional label is: **joyful**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#20
+2026-01-06 13:03:07 - INFO -   True Label:    angry
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement **"Gunther, y'know what, I am a terrible waitress, do you know why I'm a terrible waitress?"** is: **sad**.
+
+### Reasoning:
+- The speaker is reflecting on their own shortcomings ("I am a terrible waitress") in a self-critical way.
+- The tone is introspective and somewhat humble, not expressing anger, surprise, fear, joy, or disgust.
+- While there's a hint of vulnerability, the core emotion is one of self-awareness and possibly regret or low self-esteem — which aligns most closely with **sadness**.
+
+Thus, the most appropriate emotional label is: **sad**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#21
+2026-01-06 13:03:07 - INFO -   True Label:    angry
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement:  
+**"Now, that's trash. Young lady, you can't Hey! Stop that young lady, she donated trash!"**  
+is: **angry**.
+
+### Reasoning:
+- The tone is confrontational ("you can't", "Hey! Stop that").
+- There is a clear frustration or disapproval directed at the young lady for donating trash.
+- The phrase "that's trash" is used in a dismissive and critical way, indicating strong negative emotion.
+- While there may be a hint of surprise, the dominant emotion is one of irritation and outrage.
+
+Thus, the most appropriate emotional label is: **angry**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#22
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_0:"I'll just tell Rachel I'm gonna be doing laundry for a couple of hours."> is: **neutral**.
+
+Explanation: The statement is a routine, factual action with no clear emotional tone—neither joyful, surprised, fearful, or otherwise charged. It reflects a simple plan to inform someone about a mundane activity, indicating a neutral emotional state.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#23
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"Oh, it's okay. I don't"** from Speaker_0 is: **neutral**.
+
+Explanation:  
+Speaker_0 is responding calmly and gently to Speaker_1's frustration or apology, showing understanding and reassurance without any strong emotional intensity. There is no surprise, fear, joy, sadness, disgust, or anger — just a polite, composed acknowledgment. The tone is balanced and composed, fitting best with the emotion of **neutral**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#24
+2026-01-06 13:03:07 - INFO -   True Label:    fear
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The most appropriate emotional label for the statement:
+
+**"Umm, about that-that-that last move where the woman tripped you and then pinned you to the floor, what-what-what-what would you do next?"**
+
+is: **fear**
+
+### Reasoning:
+- The phrase "tripped you and then pinned you to the floor" implies a physically intense and potentially dangerous situation.
+- The use of repeated "what" and hesitant, stuttering language ("Umm, about that-that-that") suggests hesitation, possibly due to anxiety or concern about the scenario.
+- While the tone is not explicitly angry or disgusted, the context of being pinned to the floor in a potentially aggressive or unsafe situation evokes a sense of **fear**—a natural emotional response to physical vulnerability or danger.
+- There is no clear indication of joy, sadness, surprise, or disgust in the phrasing.
+
+Thus, **fear** is the most emotionally accurate label. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#25
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_1:"I know, me too."> is: **neutral**.
+
+Explanation: The statement "I know, me too" is a simple, reflective acknowledgment of a shared experience (likely the time being 9 and it being dark). It does not convey strong emotion such as joy, surprise, fear, sadness, anger, or disgust. It reflects a calm, cooperative tone, typical of a neutral emotional state.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#26
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"Very cold, hard, unyielding, y'know nothing"** from Speaker_1 is: **angry**.
+
+### Reasoning:
+While the phrase describes emotional detachment and coldness, it is used in the context of a personal betrayal ("once you betray me"), and Speaker_1 is expressing resentment and a sense of being hurt. The statement is not merely neutral or sad—it carries a tone of resentment, frustration, and emotional retaliation. The use of "unyielding" and "y'know nothing" implies a sharp, defensive, and possibly hostile reaction, which aligns most closely with **anger**.
+
+Although there is a sad or cold undertone, the emotional core here is reactive and defensive, rooted in hurt and a desire to assert emotional boundaries—hallmarks of **anger**.
+
+✅ Final answer: **angry**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#27
+2026-01-06 13:03:07 - INFO -   True Label:    fear
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement:  
+**"No wait, look. Look! I'm sorry, it's just I've never even"**  
+is: **surprise**.
+
+### Reasoning:
+- "No wait, look. Look!" indicates a sudden realization or unexpected moment — this is a strong signal of **surprise**.
+- The phrase "I'm sorry" shows humility or awareness of a mistake or awkwardness, but it doesn't dominate the emotional tone.
+- "I've never even" suggests a lack of prior experience, which may add a sense of vulnerability, but the primary emotional trigger is the abrupt, attention-grabbing "look" — a classic sign of surprise.
+
+While there's a hint of vulnerability or sadness, the immediate emotional reaction in the utterance is **surprise**.
+
+✅ Final answer: **surprise**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#28
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The most appropriate emotional label for Speaker_0's statement: **"Oh, I didn't go to college."** is:
+
+**neutral**
+
+### Reasoning:
+The statement is factual and provides information about educational background. There is no clear indication of surprise, fear, sadness, joy, disgust, or anger. The use of "Oh" might slightly suggest mild emphasis or a conversational tone, but it does not convey strong emotion. It is best interpreted as a neutral, informative response in the context of the conversation. 
+
+Thus, the correct emotional label is: **neutral**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#29
+2026-01-06 13:03:07 - INFO -   True Label:    angry
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_2:"Whoa-whoa you guys, it's not a cat!"> is: **surprise**.
+
+Explanation: Speaker_2 responds to what seems to be a misunderstanding or miscommunication (likely about the game being mistaken for a cat), using a reactive tone with "whoa-whoa" indicating a sudden realization or correction. There is no clear indication of fear, anger, disgust, sadness, joy, or neutrality — the tone is more reactive and surprised by the misinterpretation. Hence, **surprise** is the most appropriate emotional label.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#30
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The most appropriate emotional label for <Speaker_0: "He's not here right now."> is: **neutral**.
+
+Explanation: The statement is a straightforward, factual response to a question about the whereabouts of a person. It does not convey surprise, fear, sadness, joy, disgust, or anger. It is a neutral piece of information provided without emotional tone.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#31
+2026-01-06 13:03:07 - INFO -   True Label:    angry
+2026-01-06 13:03:07 - INFO -   Predicted:     fear
+2026-01-06 13:03:07 - INFO -   Raw Output:    The most appropriate emotional label for Speaker_1's statement — "No. This is just part of a dare devil game that I play called 'wait until the last moment before I burst and die.'" — is: **joyful**.
+
+Explanation:  
+While the phrase "burst and die" may sound dramatic or even frightening, the context is presented as a *game* or *prank* that Speaker_1 is playing humorously. The tone is light, self-deprecating, and playful. The speaker is not expressing fear, sadness, or anger — rather, they are engaging in a joke or a form of comedic exaggeration. This aligns best with a **joyful** or **playful** emotional state.
+
+Thus, the best choice from the given options is: **joyful**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#32
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"You’re right."** from Speaker_1 is most appropriately:
+
+**neutral**
+
+### Reasoning:
+- Speaker_1 is responding to a suggestion from Speaker_0 to handle the situation gently.
+- The phrase "You’re right" indicates agreement or acceptance of advice, not a strong emotional reaction like fear, sadness, joy, or anger.
+- There is no indication of surprise, disgust, or intense emotion.
+- The tone is reflective and compliant, suggesting a calm, rational acceptance — fitting best with **neutral**.
+
+Thus, the correct emotional label is: **neutral**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#33
+2026-01-06 13:03:07 - INFO -   True Label:    angry
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_0:"Thats not true!"> is: **surprise**.
+
+Explanation: Speaker_0 is reacting to the claim that "Rachel always cries," and immediately disputes it with "That's not true!" This indicates a moment of surprise or disbelief, not anger, sadness, or fear. While there may be an element of defense, the tone and context suggest a reactive surprise at being contradicted, rather than a strong emotional outburst. Therefore, **surprise** is the most appropriate emotional label.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#34
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for Speaker_1's statement — "Take it easy--if you want, there's cookies on the counter, or, or--sangria! I can make sangria!" — is: **joyful**.
+
+Explanation: Although the tone is calm and slightly playful ("Take it easy"), the offer of cookies and sangria suggests warmth, hospitality, and a positive, welcoming intent. The use of exclamation and enthusiasm in the offer reflects a joyful and friendly emotional state. There is no sign of fear, sadness, anger, surprise, or disgust. The sentiment is supportive and cheerful.
+
+✅ Correct label: **joyful**
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#35
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_2:"Cut!"> is most appropriately: **neutral**.
+
+Explanation:  
+"Cut!" is a standard command used in filming or performance settings to signal the end of a take. It is a factual, functional statement rather than an expression of strong emotion. While it might carry a slight sense of finality or relief, there is no clear indication of surprise, fear, joy, anger, sadness, or disgust in the context. The tone is professional and composed, fitting best with a **neutral** emotional label.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#36
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement:  
+**"Okay well, then well both do it today and hell just have to deal with it!"**  
+is: **angry**.
+
+### Reasoning:
+While the tone has a slightly sarcastic or dismissive edge, the speaker is pushing forward with a plan that involves firing the chef and possibly confronting the situation directly — despite earlier expressions of concern and emotional discomfort. The phrase "he'll just have to deal with it" reflects a dismissive, possibly contemptuous attitude toward the consequences of the situation. This suggests frustration, irritation, or anger toward the other person (Speaker_1) and the situation itself.
+
+Additionally, the context shows that Speaker_0 has been reacting to a series of emotional and interpersonal missteps (e.g., the chef being described as "sweet," the fear of the chef "killing himself," the suggestion of emotional manipulation). Speaker_0's response is not joyful, surprised, or sad —
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#37
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for Speaker_4's statement — "There is a revolutionary new product that guarantees that you'll never have to open up milk cartons again. Meet the Milk Master 2000." — is: **joyful**.
+
+**Reasoning:** Speaker_4 is introducing a positive, exciting solution to a common problem (difficult milk carton opening). The use of words like "revolutionary" and the enthusiastic tone suggest optimism and excitement, which align with a joyful emotional state. There is no indication of fear, anger, disgust, sadness, or surprise in the context — the focus is on a beneficial, innovative product. While "surprise" might seem plausible due to the unexpected nature of the product, the overall tone is more celebratory and hopeful, making **joyful** the most appropriate choice.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#38
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement:  
+**"Ooh! I'm sorry! I think, I THINK, that may have missed the table!"**  
+is: **surprise**.
+
+### Reasoning:
+- The use of "Ooh!" is a vocal expression typically associated with surprise or sudden realization.
+- The repeated "I think, I THINK" suggests hesitation and uncertainty, which can amplify the emotional tone of surprise or anxiety about a possible mistake.
+- While there is a sense of apology ("I'm sorry"), the emotional core is not sadness, anger, or joy — rather, it's a moment of sudden realization or concern about having missed something.
+- "Fear" is too strong and not supported by the tone.
+- "Sad" or "angry" are not present in the expression.
+
+Thus, the most appropriate emotional label is: **surprise**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#39
+2026-01-06 13:03:07 - INFO -   True Label:    angry
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"Speaker_2: I did not cry my eyes out!!"** is: **angry**.
+
+### Reasoning:
+Although the statement is a denial of crying, the tone is defensive and assertive — using exclamation marks and a direct, emphatic refusal. This indicates frustration or irritation at being accused of crying, especially in a context where the speaker is being challenged about emotional connection. The emotional undercurrent is not sadness, surprise, or fear, but rather a defensive reaction to being wronged or misrepresented. This fits best with **angry**.
+
+✅ Final answer: **angry**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#40
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_1:"All right."> is: **neutral**.
+
+Explanation: Speaker_1 responds calmly and simply to Speaker_2's statement, showing no evident emotion such as surprise, fear, joy, sadness, anger, or disgust. The response is a polite and neutral acknowledgment, fitting the context of a casual, non-confrontational interaction.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#41
+2026-01-06 13:03:07 - INFO -   True Label:    surprise
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_1:"Sure. What? About uh, you showering with your mom?"> is: **surprise**.
+
+Explanation: Speaker_1 responds with a hesitant and slightly offbeat tone ("About uh, you showering with your mom?"), which suggests they are surprised or caught off guard by the topic. The phrasing implies a misunderstanding or misinterpretation of the subject, indicating surprise rather than fear, sadness, anger, or disgust. While the tone is neutral in intent, the reaction to the topic is clearly one of surprise.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#42
+2026-01-06 13:03:07 - INFO -   True Label:    angry
+2026-01-06 13:03:07 - INFO -   Predicted:     angry
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_0:"You stole them from me!"> is: **angry**.
+
+Explanation: The statement expresses a strong sense of ownership being violated and accuses the other person of theft, which conveys frustration and resentment. This aligns most closely with the emotion of **anger**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#43
+2026-01-06 13:03:07 - INFO -   True Label:    fear
+2026-01-06 13:03:07 - INFO -   Predicted:     fear
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for **"Monica kinda trusted me with something and she shouldn't have!"** is: **fear**.
+
+### Reasoning:
+- The statement expresses a sense of **doubt and internal conflict** about a trust that was misplaced.
+- The phrase "she shouldn't have" implies **regret or concern** about a situation that may have gone wrong.
+- The speaker is **freaking out** earlier, and this line reflects anxiety about a breach of trust.
+- While there's a hint of sadness or regret, the core emotion is rooted in **fear**—fear of having been entrusted with something that now seems inappropriate or potentially damaging.
+
+Thus, the most accurate emotional label is: **fear**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#44
+2026-01-06 13:03:07 - INFO -   True Label:    sad
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The most appropriate emotional label for <Speaker_1:"Really its nothing. Im just"> is: **neutral**.
+
+Explanation: Speaker_1 is responding to Speaker_0's comment with a dismissive and calm tone, stating "Really it's nothing" and "I'm just" — suggesting they are downplaying or minimizing the situation. There is no clear indication of surprise, fear, sadness, joy, disgust, or anger. The tone is flat and defensive, typical of a neutral response. Therefore, **neutral** is the best fit.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#45
+2026-01-06 13:03:07 - INFO -   True Label:    angry
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_1:"You kissed my best Ross! ...Or something to that effect."> is: **joyful**.
+
+Explanation: The phrase "You kissed my best Ross!" suggests a lighthearted, playful, and affectionate memory or joke, likely referencing a shared or nostalgic experience. The tone is warm, humorous, and filled with positive emotion, indicating joy rather than surprise, fear, sadness, or negativity. While there's a hint of playful teasing, the overall sentiment is affectionate and upbeat. Hence, **joyful** is the most appropriate emotional label.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#46
+2026-01-06 13:03:07 - INFO -   True Label:    sad
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement:
+
+**"Besides, somebody had to ride in that other taxi with the rest of your luggage, and your friends don't really seem to care too much that you're leaving."**
+
+is: **sad**.
+
+### Reasoning:
+While the tone is not overtly angry or disgusted, the statement carries a subtle undercurrent of disappointment and emotional distance. The speaker implies that the friends are indifferent to the person's departure, which can evoke a sense of loneliness or sadness. The phrase "don't really seem to care too much" suggests emotional detachment, which is often associated with sadness, especially in the context of relationships or farewells.
+
+There is no surprise, fear, joy, or anger directly expressed. The sentiment is more reflective and emotionally weighted toward sadness.
+
+✅ Final answer: **sad**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#47
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for **<Speaker_2:"Yeah, I recognize the ankles!">** is: **neutral**.
+
+### Reasoning:
+- Speaker_2 responds with recognition ("I recognize the ankles!") in a straightforward, factual manner.
+- There is no clear indication of surprise, fear, joy, sadness, anger, or disgust.
+- The statement is a simple acknowledgment of a visual detail (ankles), likely confirming the presence of someone (Speaker_0) who is with Paul.
+- The tone is calm and observational, not emotionally charged.
+
+Thus, the most appropriate emotional label is **neutral**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#48
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_0: "Hey. When you guys were kids and you played"> is: **neutral**.
+
+Explanation: The statement is a reflective, conversational opener that does not convey strong emotion such as joy, sadness, anger, or surprise. It is a neutral, nostalgic inquiry about past experiences, suggesting a calm and friendly tone without overt emotional intensity.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#49
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for Speaker_1's statement — "Yeah, y'know the ah, the girlfriend I told you about last night?" — is most appropriately:
+
+**neutral**
+
+Explanation:  
+The statement is a simple acknowledgment or reference to a previous mention (the girlfriend). There is no clear indication of surprise, fear, sadness, joy, disgust, or anger. The use of "ah" suggests mild hesitation or casual speech, but it does not convey strong emotional content. The tone is conversational and factual, aligning with a neutral emotional state.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#50
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for **Speaker_1:"Oh, um, Chandler?"** is: **surprise**.
+
+### Reasoning:
+- Speaker_2 has just expressed frustration and emotional investment in spending time with Aurora, emphasizing that every second with her is meaningful and that they've "wasted" time talking to the others.
+- Speaker_1 responds with a hesitant, confused "Oh, um, Chandler?" — this suggests they are momentarily caught off guard by the shift in tone and the sudden mention of "Chandler," which may not have been expected.
+- There's no clear sign of anger, sadness, joy, fear, or disgust. The tone is mild, awkward, and reactive — fitting best with **surprise**.
+- The use of "um" indicates hesitation, which is consistent with a person processing a sudden or unexpected situation.
+
+Thus, the most appropriate emotional label is: **surprise**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#51
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_0:"Oh yeah!"> is: **joyful**.
+
+Explanation: "Oh yeah!" is an exclamation that typically expresses enthusiasm, approval, or excitement. While it could carry a hint of surprise, the context — especially the prior statement about the unit being sturdy and having ample storage — suggests Speaker_0 is positively reacting to the description. "Joyful" best captures the positive, enthusiastic tone.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#52
+2026-01-06 13:03:07 - INFO -   True Label:    angry
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"I'm next!"** from Speaker_1 is most appropriately: **fear**.
+
+### Reasoning:
+While the statement may sound assertive or even joyful at first glance, the context is critical. Speaker_1 has just recounted that **four women have come and gone with their babies**, and they are **dilated**, implying they are in labor. The phrase "Since I have been waiting four women... I'm next!" suggests a sense of urgency, exhaustion, and anxiety — common emotions during labor. The repetition of "You listen to me!" and the reference to dilation and childbirth indicate a high-stress, emotionally charged situation.
+
+The emotion is not purely joyful (which would be unexpected in this context), nor is it surprise or disgust. It is not neutral or sad in the way of deep sorrow — rather, it's a **fearful urgency** — the fear of being next in line, possibly with the physical and emotional toll of childbirth.
+
+
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#53
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **Speaker_4:"No! Year! Happy No Year!"** is most appropriately:
+
+**joyful**
+
+### Reasoning:
+- The phrase "Happy No Year!" appears to be a playful, possibly nonsensical or humorous expression, but the inclusion of "Happy" strongly indicates a positive emotional tone.
+- The exclamation marks and energetic phrasing ("No! Year! Happy No Year!") suggest excitement or celebration.
+- While "surprise" is possible due to the abruptness, the core sentiment is clearly tied to happiness.
+- There is no indication of fear, sadness, disgust, anger, or neutrality.
+
+Thus, despite the oddity of the phrase, the emotional tone is **joyful**.
+
+✅ Final answer: **joyful**
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#54
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_1:"Oh, that is so sweet!"> is: **joyful**.
+
+Explanation: The phrase "Oh, that is so sweet!" expresses positive emotion, appreciation, and delight, which aligns most closely with a joyful sentiment. While there is a touch of surprise in the context, the primary emotional tone is one of warmth and happiness. Therefore, "joyful" is the most appropriate choice.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#55
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"Noo way, Kevin."** is most appropriately: **joyful**.
+
+### Reasoning:
+- The phrase "Noo way, Kevin" is likely a playful, enthusiastic expression of excitement or approval.
+- It follows the context of a show about "Amazing Discoveries," which is likely presented in a fun, engaging, and upbeat tone.
+- Speaker_4 says "And there is Kevin," suggesting Kevin is the solution to a problem (the hard-to-open milk cartons), and Speaker_5 responds with enthusiasm — "Noo way" is a lighthearted, energetic way of saying "Absolutely! Let's go!" or "Yes, let's show it!"
+- There is no indication of anger, fear, disgust, sadness, or surprise in tone or context.
+
+Thus, the emotional tone is **joyful**. ✅
+
+**Answer: joyful**
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#56
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_0: "Come on, Lydia, you can do it."> is: **joyful**.
+
+Explanation: The phrase "Come on, Lydia, you can do it" is encouraging and motivational, conveying confidence and positive support. It reflects optimism and emotional encouragement, which aligns most closely with the emotion of **joyful**. While it may have a touch of warmth or hope, it does not express surprise, fear, sadness, disgust, or anger. Therefore, the most appropriate emotional label is **joyful**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#57
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_0:"Yeah, I understand."> is: **neutral**.
+
+Explanation: Speaker_0 responds with acknowledgment and empathy, showing they are listening and recognizing Speaker_1's statement. There is no clear indication of surprise, fear, sadness, joy, disgust, or anger. The tone is calm and composed, reflecting a neutral emotional state.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#58
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement **"Yknow, Im not gonna play anymore, would you, can you finish my set?"** is most appropriately:
+
+**sad**
+
+### Reasoning:
+- The speaker expresses a decision to stop playing, which implies a sense of ending or withdrawal from an activity.
+- The phrase "I'm not gonna play anymore" suggests a loss of enthusiasm or emotional connection, often tied to sadness or disappointment.
+- While there's a request ("can you finish my set?"), it's not driven by anger, surprise, or joy — rather, it's a gentle, resigned plea, indicating emotional fatigue or a sense of closure.
+- There's no evidence of fear, disgust, or surprise.
+
+Thus, the most fitting emotional label is **sad**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#59
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     fear
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_0:"No! No Joey! U-N-I-sex."> is: **joyful**.
+
+Explanation: Speaker_0 is emphatically correcting Joey and emphasizing the point that the item is unisex, using a playful and energetic tone ("No! No Joey!", "U-N-I-sex" with emphasis). The exclamation and repetition suggest enthusiasm and a sense of triumph or delight in clarifying a point. There is no indication of anger, fear, disgust, or sadness. The tone is light-hearted and positive, fitting best with **joyful**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#60
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_0:"I got my hair coloured!"> is: **joyful**.
+
+Explanation: The phrase "I got my hair coloured!" is presented in a context of excitement and anticipation ("I've been waiting for this for months!"), and the speaker expresses enthusiasm and eagerness. This indicates a positive, happy emotion, specifically joy. While "surprise" could be a possibility, the tone and context suggest a deliberate expression of joy rather than sudden surprise. Therefore, the most accurate emotional label is **joyful**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#61
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"Speaker_1: Oh, what a fun office."** is most appropriately **joyful**.
+
+Explanation: Although the statement is lighthearted and possibly self-deprecating, the use of "fun office" in response to a playful and casual office interaction suggests a tone of amusement and positive sentiment. The speaker is likely expressing a sense of humor and enjoyment in the situation, which aligns with **joyful** emotions. There is no indication of surprise, fear, sadness, disgust, or anger.
+
+✅ Correct emotional label: **joyful**
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#62
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     joyful
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_0:"Good, good, good, good, good."> is: **joyful**.
+
+Explanation: The repeated use of "good" in response to the positive news about seeing "it tonight" (likely a shared activity or event) reflects enthusiasm and happiness. Speaker_0 is clearly excited and delighted, showing a positive and upbeat emotional state. This aligns with the emotion of **joyful**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#63
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_0:"Oh well you're the best. You come here to me."> is: **joyful**.
+
+Explanation: The statement expresses appreciation and affection, reflecting a positive and warm emotional tone. Speaker_0 is acknowledging Speaker_1's kindness and expressing gratitude, which aligns with joyful emotions. There is no indication of surprise, fear, sadness, anger, or disgust. The sentiment is heartfelt and affectionate.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#64
+2026-01-06 13:03:07 - INFO -   True Label:    sad
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_2:"Sorry."> is: **sad**.
+
+Explanation: Speaker_1 expresses shock and disbelief upon learning that "Mac and C.H.E.E.S.E." has been canceled, with exclamations like "Canceled?!" and "We're not even shootin' them anymore?!!" This indicates deep emotional impact, likely rooted in disappointment or sadness. Speaker_2 responds with "Sorry," which, in this context, is not an expression of surprise, fear, anger, or joy, but rather a gesture of empathy or acknowledgment of the bad news. The tone suggests regret or sympathy, aligning most closely with **sad**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#65
+2026-01-06 13:03:07 - INFO -   True Label:    surprise
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_1: "Oh Willie's still alive!"> is: **joyful**.
+
+Explanation: The statement "Oh Willie's still alive!" expresses relief and happiness that someone (Willie) is alive, especially in the context of a potentially alarming or disturbing event (a person licking someone's neck on the subway). The tone is positive and relieved, indicating a sense of joy or gladness. While there may be a hint of surprise, the core emotion conveyed is one of relief and happiness — best captured by **joyful**. 
+
+Note: "Surprise" could be a contender, but "joyful" better reflects the emotional weight of the statement, especially given the context of a potentially dangerous situation being resolved with a positive outcome.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#66
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for **Speaker_2: "Hey, Chandler, why don't we talk this over at the Ranger game tomorrow?"** is: **neutral**.
+
+### Reasoning:
+- The statement is a polite, forward-looking suggestion for a future meeting.
+- There is no clear indication of surprise, fear, joy, sadness, anger, or disgust.
+- While the context involves a potential romantic or social development (e.g., Rachel, dating, prior relationship), Speaker_2's response is neutral in tone — it's a casual, non-confrontational proposal.
+- The phrase "why don't we talk this over" is typical of a neutral, collaborative suggestion.
+
+Thus, the most appropriate emotional label is: **neutral**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#67
+2026-01-06 13:03:07 - INFO -   True Label:    sad
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement **"Yknow, I wish I could get him to open up a little bit, share some feelings."** is: **sad**.
+
+### Reasoning:
+While the statement is not explicitly expressing sadness, it reflects a subtle longing and concern for emotional connection. The speaker expresses a desire for Paul to share his feelings, implying a sense of emotional distance or loneliness. This underlying yearning for intimacy and emotional openness is best captured by the emotion of **sadness** — not because of overt sorrow, but because of a quiet, empathetic awareness of a missing emotional bond.
+
+Other options:
+- **Neutral**: Too flat; the statement carries emotional weight.
+- **Joyful**: Contradicts the tone.
+- **Surprise, fear, disgust, angry**: Not supported by the context.
+
+✅ Final answer: **sad**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#68
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_0:"The physical act of love."> is: **neutral**
+
+Explanation: Speaker_0 is stating a clear, factual boundary about the scope of the conversation — limiting it to the physical act of love, without expressing strong emotions like joy, fear, anger, surprise, sadness, or disgust. The tone is calm, direct, and focused on setting boundaries, which aligns best with a neutral emotional state.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#69
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The most appropriate emotional label for the statement:
+
+"Well, y'know, monogamy can be a, uh, tricky concept. I mean, anthropologically speaking-"
+
+is: **neutral**
+
+Explanation: The speaker is introducing a topic (monogamy from an anthropological perspective) in a reflective, somewhat hesitant but calm tone. There is no clear indication of emotion such as surprise, fear, joy, sadness, anger, or disgust. The use of "well, y'know" and "uh" suggests hesitation or thoughtfulness, which is consistent with a neutral, contemplative tone rather than any strong emotional reaction.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#70
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_1:"Here we go, here we go."> is: **neutral**.
+
+Explanation: The phrase "Here we go, here we go" is typically used to indicate a transition or the beginning of something, often with a sense of routine or anticipation, but without strong emotional intensity. In this context, Speaker_1 is likely expressing a simple, matter-of-fact acknowledgment of movement or progression (e.g., the group is about to leave or start a journey). There is no clear indication of surprise, joy, fear, sadness, disgust, or anger. The tone is more neutral and procedural.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#71
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_0: "Here's my retainer!"> is most appropriately: **neutral**.
+
+Explanation: The statement "Here's my retainer!" is a factual, practical remark, likely made in the context of a conversation about a funeral or a casket, where the speaker is offering a physical object (a retainer). There is no clear indication of strong emotion such as joy, surprise, fear, sadness, anger, or disgust. It is a simple, matter-of-fact contribution to the conversation, suggesting a neutral emotional tone. While it might carry a slight tone of casualness or humor, it does not clearly align with any of the specified emotional labels beyond neutrality.
+
+✅ Final answer: **neutral**
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#72
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"I think you look fine."** from Speaker_0 is most appropriately:
+
+**neutral**
+
+### Reasoning:
+- The statement is a calm, objective, and non-emotional assessment of appearance.
+- It does not convey joy, sadness, anger, surprise, fear, or disgust.
+- It reflects a balanced, factual opinion without strong emotional tone.
+- In the context of the conversation, Speaker_0 is offering a supportive but detached observation, which aligns with neutrality.
+
+✅ Final answer: **neutral**
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#73
+2026-01-06 13:03:07 - INFO -   True Label:    angry
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for Speaker_3's statement — *"You are ideally suited for a career in data processing for a large multinational corporation."* — is best interpreted as **sad**.
+
+### Reasoning:
+While the statement itself is neutral in tone, it comes after Speaker_3 has described enduring "eight and a half hours of aptitude, intelligence, and personality tests," which implies exhaustion and frustration. The delivery of the result — a bland, generic, and unexciting career match — suggests disappointment or a sense of futility. There's no joy, surprise, anger, or disgust; instead, the tone conveys resignation or sadness about the outcome.
+
+Thus, the most appropriate emotional label is: **sad**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#74
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement:  
+**"Y'know, it's hand, hand, head, head, up, pas de bouree, pas de bouree, big turn here, grand sissone, sissone, sissone, slide back, step, step, step, and jazz hands!"**  
+
+is: **neutral**.
+
+### Reasoning:
+- The speaker is providing a factual, instructional list of dance moves.
+- There is no expression of strong emotion such as surprise, joy, fear, sadness, anger, or disgust.
+- The tone is calm, matter-of-fact, and directive — typical of a neutral emotional state in a professional or instructional context.
+- While the earlier part of the conversation (e.g., "What?!" from Speaker_1) shows surprise, the current line is a calm continuation of instruction.
+
+Thus, the most appropriate emotional label is: **neutral**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#75
+2026-01-06 13:03:07 - INFO -   True Label:    surprise
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement **"So what are you saying. I should run him under hot water and bang his head against a table?"** is: **disgust**.
+
+### Reasoning:
+While the statement is delivered in a somewhat humorous or exaggerated tone, the content — suggesting violent, extreme, and inappropriate actions to "make Paul open up" — reflects a strong sense of **disgust** toward the proposed solution. The speaker is not expressing anger in a direct or aggressive way, nor is it fear or surprise. Instead, the tone conveys **offense or revulsion** at the absurdity and cruelty of the metaphor, which is a hallmark of **disgust**.
+
+Even though the context is light-hearted, the emotional undercurrent is clearly one of **disgust** at the suggestion of violence.
+
+✅ Final answer: **disgust**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#76
+2026-01-06 13:03:07 - INFO -   True Label:    fear
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the utterance **"Where's my ring? My dead grandmother's wedding ring? Where is it? Where is it?"** is: **sad**.
+
+### Reasoning:
+While the phrase may carry a tone of urgency or surprise, the mention of a **"dead grandmother"** and a **"wedding ring"** strongly evokes a sense of **loss, grief, and emotional attachment**. The repeated questioning suggests deep personal significance and emotional pain, which aligns most closely with **sadness**.
+
+- *Surprise* is possible due to the suddenness, but the context (a deceased relative) makes it more than just surprise.
+- *Fear* or *angry* are not supported by the content.
+- *Joyful* is clearly inappropriate.
+- *Neutral* or *disgust* do not fit the emotional weight.
+
+✅ Therefore, the most accurate emotional label is: **sad**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#77
+2026-01-06 13:03:07 - INFO -   True Label:    fear
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for **Speaker_3:"Umm, see, I was thinking maybe you two could switch apartments because Phoebe's more our kind of people."** is: **neutral**.
+
+### Reasoning:
+- The statement is a suggestion, not an expression of strong emotion.
+- It contains a mild, indirect comment about preference ("Phoebe's more our kind of people"), which reflects a social observation rather than a feeling of joy, anger, fear, surprise, sadness, or disgust.
+- The tone is polite and somewhat hesitant ("Umm, see, I was thinking"), indicating a neutral, observational, and possibly slightly awkward or cautious tone.
+- There is no clear sign of surprise, anger, or strong positive emotion.
+
+Thus, the most appropriate emotional label is **neutral**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#78
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_1: "Oh, I think I saw some in here."> is: **neutral**.
+
+Explanation: Speaker_1 is providing a simple, factual response indicating they believe they saw garbage bags. There is no strong emotion expressed—no surprise, joy, fear, sadness, anger, or disgust. The tone is calm and informative, which aligns best with a neutral emotional state. While "Oh" might suggest a slight tone of awareness or mild interest, it does not indicate a strong emotional reaction. Therefore, the most accurate label is **neutral**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#79
+2026-01-06 13:03:07 - INFO -   True Label:    fear
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for **"Oh my—This is so embarrassing. Oh my God, I'm never gonna get massaged again!"** is: **surprise**.
+
+### Reasoning:
+- The phrase "Oh my—" and "Oh my God" indicates a strong reaction, typically associated with surprise.
+- While there is a sense of embarrassment, which could lean toward **sad** or **discomfort**, the immediate emotional trigger is the shock or unexpectedness of the situation (likely the previous conversation about noises being interpreted sexually).
+- The speaker is reacting to something unexpected and socially awkward, not expressing fear, anger, disgust, or joy.
+- "Embarrassing" is a strong emotional component, but in emotional analysis, **embarrassment** is often categorized under **surprise** or **shame**, and in this context, the tone is more reactive and startled than deeply sad or disgusted.
+
+Thus, the most accurate label from the given options is: **surprise**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#80
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The most appropriate emotional label for Speaker_1's statement:  
+**"Oh uh well tomorrow’s no good for her either."**  
+is: **neutral**.
+
+### Reasoning:
+- The speaker is providing a factual update about a scheduling conflict, not expressing strong emotion.
+- The use of "oh uh" suggests hesitation or mild discomfort, but this is more indicative of speech pattern or social politeness than a deep emotional state.
+- There is no clear indication of surprise, fear, sadness, joy, disgust, or anger.
+- The statement is a simple continuation of the conversation, maintaining a neutral tone.
+
+Thus, the emotional label is: **neutral**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#81
+2026-01-06 13:03:07 - INFO -   True Label:    sad
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"Can I get some ice here?!"** from Speaker_0 is most appropriately:
+
+**Surprise**
+
+### Reasoning:
+- The phrase "Can I get some ice here?!" is a sudden, abrupt request that follows a tense and emotionally charged exchange involving conflict, anger, and possibly a slap.
+- While there may be a hint of **fear** or **angry** undertones, the request for ice is not a direct expression of fear or anger — it's more of a physical, almost comical or unexpected interruption.
+- The tone suggests a shift in focus from emotional conflict to a mundane, bodily need, which is best captured by **surprise** — the speaker is caught off guard by the situation or the shift in dynamics.
+- There is no clear indication of **joy**, **disgust**, **sadness**, or **neutral** in this specific utterance.
+
+Thus, the best emotional label is: **surprise**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#82
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_1: "Hey Ross, look what I've got going here."> is most appropriately: **surprise**.
+
+Explanation: The phrase "look what I've got going here" suggests an unexpected or intriguing discovery, and the tone implies a moment of realization or excitement. While it could carry a hint of joy, the key emotional cue is the suddenness and novelty of the situation — which aligns best with **surprise**. There is no clear indication of fear, sadness, anger, disgust, or neutrality.
+
+Thus, the best choice is: **surprise**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#83
+2026-01-06 13:03:07 - INFO -   True Label:    sad
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement:  
+**"Well, yeah, yknow how Ross and I were on again, off again, on again, off again?"**  
+is: **sad**.
+
+### Reasoning:
+While the statement is neutral in tone and factual, it is embedded in a broader context where Speaker_0 is reflecting on emotional turmoil, feelings of being overwhelmed, and personal sadness about Ross's potential marriage. The repeated "on again, off again" pattern suggests instability in their relationship, which reflects emotional pain and unresolved feelings. Speaker_0 also states, *"I don’t think I’m handling it all that well"* and *"I don’t think he’s the one I’m sad about,"* indicating underlying emotional distress.
+
+Although not overtly sad in the moment, the context reveals a **sad** emotional undercurrent — a sense of emotional fatigue, confusion, and unmet expectations.
+
+Thus, the most appropriate emotional label is: **sad**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#84
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_5:"Hows your room Rach?"> is: **neutral**.
+
+Explanation: The statement "How's your room Rach?" is a simple, straightforward question about someone's living space. It does not convey clear signs of surprise, fear, sadness, joy, disgust, or anger. It is a neutral inquiry, likely meant to check in or express concern in a casual way, but without strong emotional tone or intensity. The context of the conversation includes shock and distress about a fire (evident in Speaker_0's "it's really bad" and Speaker_3's "My God"), but Speaker_5's question is not emotionally charged — it's a mild, routine check-in. Hence, the most appropriate label is **neutral**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#85
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for **Speaker_0: "Here you go, maybe this'll cheer you up."** is: **joyful**.
+
+### Reasoning:
+- The phrase "maybe this'll cheer you up" indicates a positive intention — the speaker is trying to uplift or improve the mood of someone who seems down (as evidenced by Speaker_3's frustration with the aptitude test results and Speaker_2's comment about the shirt).
+- While the tone is gentle and not overly enthusiastic, the intent is clearly supportive and hopeful.
+- "Cheer you up" is a common expression used in a **joyful or caring** context, not neutral, surprised, sad, angry, fearful, or disgusted.
+
+Thus, the most appropriate emotional label is: **joyful**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#86
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement:  
+**"Really well. Yeah. Surprisingly well. Yeah, she didn’t cry. She wasn’t angry or sad."**  
+
+is: **surprise**.
+
+### Reasoning:
+While the tone is neutral in content (no crying, no anger), the use of **"surprisingly well"** indicates that Speaker_2 was expecting something negative or emotional (like sadness or anger) but found the reaction to be unexpectedly positive. This unexpected positive outcome evokes a sense of **surprise**.
+
+Thus, the most appropriate emotional label is: **surprise**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#87
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_1:"Its uh, right through there."> is: **neutral**.
+
+Explanation: The statement is a simple, factual direction given to Speaker_0. There is no indication of surprise, fear, joy, sadness, anger, or disgust. It is a neutral, practical response in the context of the conversation. The use of "uh" suggests slight hesitation, but this does not convey strong emotion—rather, it reflects a natural, conversational tone. Therefore, the most appropriate emotional label is **neutral**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#88
+2026-01-06 13:03:07 - INFO -   True Label:    fear
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_1:"Brenda a bee!"> is most likely: **joyful**.
+
+Explanation: The phrase "Brenda a bee!" appears to be a playful, whimsical, or lighthearted utterance, possibly a misheard or made-up phrase (e.g., a mishearing of "Brenda, a bee!" or a creative expression). Given the context — a casual, relaxed interaction where Speaker_1 is already engaged in a simple, non-threatening activity (leaning on the couch) — the tone is not fearful, sad, angry, or disgusted. It lacks surprise (which would imply suddenness or unexpectedness), and while it might have a touch of playfulness, the overall emotional valence leans toward **joyful** due to its whimsical and possibly affectionate nature.
+
+Thus, the best fit is: **joyful**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#89
+2026-01-06 13:03:07 - INFO -   True Label:    surprise
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_1:"Really?!"> is: **surprise**.
+
+Explanation: The exclamation "Really?!" indicates that Speaker_1 is reacting with astonishment or unexpected delight to the offer. This is a clear sign of surprise, not joy (which would be more positive and sustained), fear, sadness, anger, disgust, or neutrality. The tone and punctuation suggest a sudden, positive reaction to a favorable outcome. Hence, the most accurate emotional label is **surprise**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#90
+2026-01-06 13:03:07 - INFO -   True Label:    disgust
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The most appropriate emotional label for <Speaker_0: "What's that smell?"> is: **surprise**.
+
+Explanation: The question "What's that smell?" suggests the speaker is encountering an unexpected or unfamiliar odor, which typically evokes a sense of surprise. While other emotions like disgust or fear could be possible depending on the context, the phrase itself is neutral in tone and primarily reflects a reactive, inquisitive response — best captured by **surprise**. There is no clear indication of anger, sadness, joy, or disgust in the utterance. Therefore, **surprise** is the most fitting emotional label.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#91
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **Speaker_1:"Why, nobody good?"** is most appropriately: **surprise**.
+
+### Reasoning:
+- The statement "Why, nobody good?" follows a context where Speaker_0 shares a surprising revelation about a roommate (sneaking out/in, living with grandmother, etc.).
+- Speaker_1 responds with a question that implies they were not expecting such a situation or that it's unexpected — suggesting a moment of surprise or mild disbelief.
+- There is no clear indication of sadness, anger, fear, joy, disgust, or neutrality — the tone is more reactive and inquisitive.
+- The phrase "nobody good" could be interpreted as a light-hearted or ironic comment, which fits with surprise rather than a strong negative emotion.
+
+Thus, the best fit is: **surprise**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#92
+2026-01-06 13:03:07 - INFO -   True Label:    angry
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **Speaker_1:"Are you mocking me?"** is: **surprise**.
+
+### Reasoning:
+- Speaker_1 is reacting to what they perceive as a potential implication that they are being mocked — specifically, when Speaker_0 says "I don't have anything against the beautiful guest room, especially since everybody we know lives about 30 seconds away!" This comment could be interpreted as a subtle jab or irony, especially given the earlier tone of disagreement about arcade games in the guest room.
+- Speaker_1 responds with "Are you mocking me?" — this is not an expression of anger, disgust, or fear, nor is it clearly joyful or sad. It reflects a sudden shift in tone, indicating **surprise** at the perceived tone or implication in Speaker_0's statement.
+- The reaction is defensive and unexpected, which aligns best with **surprise**.
+
+✅ Final answer: **surprise**.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#93
+2026-01-06 13:03:07 - INFO -   True Label:    surprise
+2026-01-06 13:03:07 - INFO -   Predicted:     surprise
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"Speaker_1: 'Are you kidding?'"** is best interpreted as **disgust**.
+
+### Reasoning:
+- Speaker_1 says *"It tastes like feet!"* immediately before asking *"Are you kidding?"*, which indicates a strong negative reaction to the flavor.
+- The phrase "tastes like feet" is a classic expression of disgust, often used to describe something unpleasant or repulsive.
+- The follow-up question "Are you kidding?" suggests disbelief or shock at the idea that someone would enjoy such a thing, reinforcing the emotional tone of **disgust** rather than surprise, anger, or fear.
+
+While "surprise" is possible, the context is more about a visceral negative reaction than mere surprise.
+
+✅ Final answer: **disgust**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#94
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_0:"'Cause let's face it, we're at Monica's."> is: **neutral**.
+
+Explanation: This statement is a simple, factual observation that serves as a transition or context-setting remark. It does not convey strong emotions such as fear, joy, surprise, or anger. The tone is calm and matter-of-fact, consistent with a neutral emotional state. While the earlier part of the dialogue includes elements of reassurance and apology, this specific line is not emotionally charged.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#95
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_2:"Chandler?"> is most appropriately: **surprise**.
+
+Explanation: Speaker_2 responds to Speaker_1's suggestion with a simple, direct question ("Chandler?"), which implies they are momentarily taken aback or uncertain about the proposal. This hesitation or questioning in the context of a group decision suggests a moment of surprise rather than neutrality, fear, sadness, joy, disgust, or anger. The tone is not confrontational or emotional in a strong way, but rather a reactive pause — fitting best with **surprise**.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#96
+2026-01-06 13:03:07 - INFO -   True Label:    joyful
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of <Speaker_0:"Hey!"> is: **joyful**.
+
+Explanation: "Hey!" is typically used as a friendly, greeting-oriented exclamation, often indicating a positive or warm emotional tone. While it can sometimes be neutral or even slightly surprised, in the absence of context, the most common and appropriate emotional interpretation is **joyful** due to its friendly and upbeat nature.
+2026-01-06 13:03:07 - INFO -   Match:         ✗
+2026-01-06 13:03:07 - INFO - 
+#97
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for the statement **"Yeah, I-I considered that. I just know it would make me happy."** is: **joyful**.
+
+Explanation: Although the speaker uses hesitant language ("I-I"), the core sentiment expressed — that living with Phoebe would "make me happy" — reflects a positive, hopeful, and emotionally fulfilling emotion. This aligns most closely with **joyful** rather than neutral, surprise, fear, or sadness. The tone is not surprised or fearful, and while there's a hint of vulnerability, the underlying emotion is one of happiness and contentment.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#98
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_2:"What, you didn't get it? The doctor is a monkey."> is: **surprise**.
+
+Explanation: Speaker_2 is reacting to Speaker_1's joke (which appears to be a misdirection or a pun), and the phrase "What, you didn't get it?" suggests a tone of mild disbelief or astonishment that the other person didn't understand the joke. This indicates surprise rather than anger, joy, fear, disgust, sadness, or neutrality. The context implies a light-hearted, possibly sarcastic or humorous exchange, and the speaker is reacting to a perceived lack of understanding with a tone of surprise.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#99
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label of **"All right, ok, I gotta go."** from Speaker_1 is most appropriately:
+
+**neutral**
+
+### Reasoning:
+- The statement is a polite, straightforward exit from the conversation.
+- There is no clear expression of joy, anger, fear, surprise, sadness, or disgust.
+- It reflects a calm, practical decision to leave, without strong emotional coloring.
+- The context shows Speaker_1 has been assertive and playful earlier ("Come on, wussies!", "I'll only use my left hand, huh?"), but this final line is a neutral closure.
+
+Thus, the best fit is **neutral**. ✅
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+#100
+2026-01-06 13:03:07 - INFO -   True Label:    neutral
+2026-01-06 13:03:07 - INFO -   Predicted:     neutral
+2026-01-06 13:03:07 - INFO -   Raw Output:    The emotional label for <Speaker_2:"Yeah. I really like his glasses."> is: **joyful**.
+
+Explanation: The statement expresses a positive preference ("I really like his glasses"), which reflects a favorable and appreciative emotion. While it is not strongly enthusiastic, the tone is clearly positive and affectionate, aligning best with "joyful" rather than neutral or surprise. There is no indication of fear, sadness, disgust, anger, or surprise. "Neutral" would imply no emotional weight, which is not the case here. Thus, **joyful** is the most appropriate emotional label.
+2026-01-06 13:03:07 - INFO -   Match:         ✓
+2026-01-06 13:03:07 - INFO - 
+Results saved to: /home/xuyao/data/eval_results.json
+2026-01-06 13:03:07 - INFO - Log saved to: logs/inference_20260106_113743.log
+2026-01-06 13:03:07 - INFO - 
+============================================================
+2026-01-06 13:03:07 - INFO - Inference completed successfully!
