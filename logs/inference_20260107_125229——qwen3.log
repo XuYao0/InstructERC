@@ -1,0 +1,126 @@
+2026-01-07 12:52:29 - INFO - ============================================================
+2026-01-07 12:52:29 - INFO - MELD Emotion Recognition - Inference & Evaluation
+2026-01-07 12:52:29 - INFO - ============================================================
+2026-01-07 12:52:29 - INFO - Log file: logs/inference_20260107_125229.log
+2026-01-07 12:52:29 - INFO - Model: /home/xuyao/data/qwen3-4B-Instruct-2507
+2026-01-07 12:52:29 - INFO - Test data: ./swift_data/meld/test.jsonl
+2026-01-07 12:52:29 - INFO - Batch size: 8
+2026-01-07 12:52:29 - INFO - ============================================================
+
+2026-01-07 12:52:29 - INFO - Loading model from: /home/xuyao/data/qwen3-4B-Instruct-2507
+2026-01-07 12:52:29 - INFO - Loading test data from: ./swift_data/meld/test.jsonl
+2026-01-07 12:52:29 - INFO - Loaded 2610 test samples
+2026-01-07 12:52:37 - INFO - 
+Running inference...
+2026-01-07 12:52:37 - INFO - Streaming results to: logs/detailed_outputs_qwen3-4B-Instruct-2507_20260107_125229.jsonl
+2026-01-07 13:39:36 - INFO - Processed 200/2610
+2026-01-07 14:24:46 - INFO - Processed 400/2610
+2026-01-07 15:07:34 - INFO - Processed 600/2610
+2026-01-07 15:50:55 - INFO - Processed 800/2610
+2026-01-07 16:34:07 - INFO - Processed 1000/2610
+2026-01-07 17:19:49 - INFO - Processed 1200/2610
+2026-01-07 18:02:56 - INFO - Processed 1400/2610
+2026-01-07 18:51:00 - INFO - Processed 1600/2610
+2026-01-07 19:38:41 - INFO - Processed 1800/2610
+2026-01-07 20:26:38 - INFO - Processed 2000/2610
+2026-01-07 21:13:33 - INFO - Processed 2200/2610
+2026-01-07 22:04:01 - INFO - Processed 2400/2610
+2026-01-07 22:48:55 - INFO - Processed 2600/2610
+2026-01-07 22:51:59 - INFO - All results saved to: logs/detailed_outputs_qwen3-4B-Instruct-2507_20260107_125229.jsonl
+2026-01-07 22:51:59 - INFO - 
+============================================================
+2026-01-07 22:51:59 - INFO - Evaluation Results
+2026-01-07 22:51:59 - INFO - ============================================================
+2026-01-07 22:51:59 - INFO - 
+Accuracy: 54.06%
+2026-01-07 22:51:59 - INFO - Weighted F1: 55.27%
+2026-01-07 22:51:59 - INFO - Macro F1: 43.96%
+2026-01-07 22:51:59 - INFO - 
+Label Extraction Statistics:
+2026-01-07 22:51:59 - INFO -   Total samples: 2610
+2026-01-07 22:51:59 - INFO -   Successfully extracted: 2610 (100.00%)
+2026-01-07 22:51:59 - INFO -   Failed to extract: 0 (0.00%)
+2026-01-07 22:51:59 - INFO - 
+Classification Report:
+2026-01-07 22:51:59 - INFO - 
+              precision    recall  f1-score   support
+
+     neutral     0.8238    0.5510    0.6603      1256
+    surprise     0.3411    0.7295    0.4649       281
+        fear     0.2143    0.3600    0.2687        50
+         sad     0.4314    0.4231    0.4272       208
+      joyful     0.4668    0.6990    0.5598       402
+     disgust     0.2397    0.4265    0.3069        68
+       angry     0.6203    0.2841    0.3897       345
+
+    accuracy                         0.5406      2610
+   macro avg     0.4482    0.4962    0.4396      2610
+weighted avg     0.6318    0.5406    0.5527      2610
+
+2026-01-07 22:51:59 - INFO - 
+Ground Truth Distribution:
+2026-01-07 22:51:59 - INFO -   neutral: 1256 (48.1%)
+2026-01-07 22:51:59 - INFO -   surprise: 281 (10.8%)
+2026-01-07 22:51:59 - INFO -   fear: 50 (1.9%)
+2026-01-07 22:51:59 - INFO -   sad: 208 (8.0%)
+2026-01-07 22:51:59 - INFO -   joyful: 402 (15.4%)
+2026-01-07 22:51:59 - INFO -   disgust: 68 (2.6%)
+2026-01-07 22:51:59 - INFO -   angry: 345 (13.2%)
+2026-01-07 22:51:59 - INFO - 
+Prediction Distribution:
+2026-01-07 22:51:59 - INFO -   neutral: 840 (32.2%)
+2026-01-07 22:51:59 - INFO -   surprise: 601 (23.0%)
+2026-01-07 22:51:59 - INFO -   fear: 84 (3.2%)
+2026-01-07 22:51:59 - INFO -   sad: 204 (7.8%)
+2026-01-07 22:51:59 - INFO -   joyful: 602 (23.1%)
+2026-01-07 22:51:59 - INFO -   disgust: 121 (4.6%)
+2026-01-07 22:51:59 - INFO -   angry: 158 (6.1%)
+2026-01-07 22:51:59 - INFO - 
+============================================================
+2026-01-07 22:51:59 - INFO - Sample Predictions (first 5):
+2026-01-07 22:51:59 - INFO - ============================================================
+2026-01-07 22:51:59 - INFO - 
+#1
+2026-01-07 22:51:59 - INFO -   True Label:    surprise
+2026-01-07 22:51:59 - INFO -   Predicted:     neutral
+2026-01-07 22:51:59 - INFO -   Raw Output:    The emotional label for Speaker_0's statement — "Why do all you're coffee mugs have numbers on the b...
+2026-01-07 22:51:59 - INFO -   Match:         ✗
+2026-01-07 22:51:59 - INFO - 
+#2
+2026-01-07 22:51:59 - INFO -   True Label:    angry
+2026-01-07 22:51:59 - INFO -   Predicted:     joyful
+2026-01-07 22:51:59 - INFO -   Raw Output:    The emotional label for Speaker_1's response is: **joyful**.
+
+Explanation: The response is light-hea...
+2026-01-07 22:51:59 - INFO -   Match:         ✗
+2026-01-07 22:51:59 - INFO - 
+#3
+2026-01-07 22:51:59 - INFO -   True Label:    neutral
+2026-01-07 22:51:59 - INFO -   Predicted:     neutral
+2026-01-07 22:51:59 - INFO -   Raw Output:    The emotional label of <Speaker_1:"Y'know what?"> is most appropriately: **neutral**.
+
+Explanation: ...
+2026-01-07 22:51:59 - INFO -   Match:         ✓
+2026-01-07 22:51:59 - INFO - 
+#4
+2026-01-07 22:51:59 - INFO -   True Label:    neutral
+2026-01-07 22:51:59 - INFO -   Predicted:     joyful
+2026-01-07 22:51:59 - INFO -   Raw Output:    The emotional label of <Speaker_0: "Come on, Lydia, you can do it."> is: **joyful**.
+
+Explanation: T...
+2026-01-07 22:51:59 - INFO -   Match:         ✗
+2026-01-07 22:51:59 - INFO - 
+#5
+2026-01-07 22:51:59 - INFO -   True Label:    joyful
+2026-01-07 22:51:59 - INFO -   Predicted:     joyful
+2026-01-07 22:51:59 - INFO -   Raw Output:    The emotional label of <Speaker_0:"Push!"> is most appropriately: **joyful**.
+
+Explanation: In the c...
+2026-01-07 22:51:59 - INFO -   Match:         ✓
+2026-01-07 22:51:59 - INFO - 
+Metrics saved to: logs/eval_results_qwen3-4B-Instruct-2507_20260107_125229.json
+2026-01-07 22:51:59 - INFO - Detailed outputs saved to: logs/detailed_outputs_qwen3-4B-Instruct-2507_20260107_125229.jsonl
+2026-01-07 22:51:59 - INFO - Log saved to: logs/inference_20260107_125229.log
+2026-01-07 22:51:59 - INFO - 
+============================================================
+2026-01-07 22:51:59 - INFO - Inference completed successfully!

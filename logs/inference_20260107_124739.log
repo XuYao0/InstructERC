@@ -1,0 +1,12 @@
+2026-01-07 12:47:39 - INFO - ============================================================
+2026-01-07 12:47:39 - INFO - MELD Emotion Recognition - Inference & Evaluation
+2026-01-07 12:47:39 - INFO - ============================================================
+2026-01-07 12:47:39 - INFO - Log file: logs/inference_20260107_124739.log
+2026-01-07 12:47:39 - INFO - Model: /home/xuyao/data/qwen3-4B-Instruct-2507
+2026-01-07 12:47:39 - INFO - Test data: ./swift_data/meld/test.jsonl
+2026-01-07 12:47:39 - INFO - Batch size: 8
+2026-01-07 12:47:39 - INFO - ============================================================
+
+2026-01-07 12:47:39 - INFO - Loading model from: /home/xuyao/data/qwen3-4B-Instruct-2507
+2026-01-07 12:47:39 - INFO - Loading test data from: ./swift_data/meld/test.jsonl
+2026-01-07 12:47:39 - INFO - Loaded 2610 test samples
